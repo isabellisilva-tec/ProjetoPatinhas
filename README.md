@@ -122,8 +122,6 @@ O jogo também permite favoritar animais, personalizar o nome e o tema do abrigo
 
 ## 4. Versões intermediárias do desenvolvimento
 
-O projeto foi desenvolvido em conjunto pelas integrantes da equipe. Durante o desenvolvimento, as funcionalidades foram organizadas e integradas para formar a versão apresentada.
-
 A equipe não registrou versões intermediárias separadas durante esse processo. Por isso, o projeto é identificado como **Versão 1.0**, sem criar registros de etapas que não foram documentadas.
 
 ## 5. Erro encontrado, causa e correção
