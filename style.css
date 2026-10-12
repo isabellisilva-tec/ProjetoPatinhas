@@ -1,0 +1,1754 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --rosa: #e98fb4;
+    --rosa-escuro: #c75f91;
+    --rosa-forte: #e75d9b;
+    --rosa-claro: #fff0f6;
+    --rosa-fundo: #fff8fb;
+    --rosa-borda: #f3d8e4;
+    --texto: #493747;
+    --texto-suave: #917d8c;
+    --branco: #ffffff;
+    --verde: #7bc8a4;
+    --azul: #8bc8ee;
+    --amarelo: #f4c968;
+    --roxo: #ad91e9;
+    --sombra: 0 12px 35px rgba(163, 92, 127, .09);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--rosa-fundo);
+    color: var(--texto);
+    min-height: 100vh;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+button:focus-visible, input:focus-visible {
+    outline: 3px solid #e98fb4;
+    outline-offset: 3px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+.tela {
+    display: none;
+    min-height: 100vh;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+.pagina {
+    display: none;
+    animation: none;
+}
+
+.pagina.ativa {
+    display: block;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(7px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* BOTÕES */
+
+.botao {
+    border: 0;
+    border-radius: 13px;
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 900;
+    transition: transform .2s, box-shadow .2s, background .2s;
+}
+
+.botao:hover:not(:disabled) {
+    /* movimento de hover removido */
+    box-shadow: 0 7px 17px rgba(190, 91, 137, .16);
+}
+
+.botao-principal {
+    background: linear-gradient(135deg, #ee94ba, #db75a3);
+    color: white;
+    box-shadow: 0 5px 12px rgba(210, 111, 157, .16);
+}
+
+.botao-claro {
+    background: #fff0f6;
+    color: var(--rosa-escuro);
+    border: 1px solid var(--rosa-borda);
+}
+
+.botao-roxo {
+    background: #eee7ff;
+    color: #7654bb;
+}
+
+.botao-largo {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px;
+}
+
+.botao-texto {
+    border: 0;
+    background: transparent;
+    color: var(--rosa-escuro);
+    font-weight: 900;
+    padding: 4px;
+}
+
+.botao-texto:hover {
+    text-decoration: underline;
+}
+
+/* LOGIN */
+
+.login-fundo {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 35px 18px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 10% 10%, #ffe3ef 0, transparent 27%),
+        radial-gradient(circle at 90% 80%, #f5d9ff 0, transparent 25%),
+        linear-gradient(135deg, #fff8fb, #fff0f6);
+}
+
+.login-card {
+    width: min(100%, 440px);
+    background: rgba(255,255,255,.96);
+    border: 1px solid #f6dbe7;
+    border-radius: 28px;
+    box-shadow: 0 24px 80px rgba(159, 86, 123, .16);
+    padding: 34px;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-grande {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 12px;
+    display: grid;
+    place-items: center;
+    background: #fff0f6;
+    border: 1px solid #f7d5e5;
+    border-radius: 25px;
+    font-size: 36px;
+    transform: rotate(-5deg);
+}
+
+.login-card > h1 {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.subtitulo {
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.login-card h2 {
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.login-card form > p,
+.login-card #areaLogin > p,
+.login-card #areaCadastro > p {
+    color: var(--texto-suave);
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.login-card label {
+    display: block;
+    margin: 14px 0 6px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.login-card input {
+    width: 100%;
+    border: 1px solid #ead8e2;
+    background: #fffafd;
+    border-radius: 12px;
+    padding: 13px;
+    color: var(--texto);
+    outline: none;
+}
+
+.login-card input:focus {
+    border-color: var(--rosa);
+    box-shadow: 0 0 0 3px #fbe5ef;
+}
+
+.troca-formulario {
+    text-align: center;
+    font-size: 12px;
+    margin: 18px 0 0;
+    color: var(--texto-suave);
+}
+
+.login-rodape {
+    border-top: 1px solid #f5e4ec;
+    padding-top: 16px;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 11px;
+    color: #ad93a2;
+}
+
+.login-decoracao {
+    position: absolute;
+    font-size: 50px;
+    opacity: .35;
+    animation: none;
+}
+
+.decoracao-um { top: 10%; left: 12%; }
+.decoracao-dois { right: 12%; bottom: 12%; }
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+.mensagem {
+    min-height: 0;
+    font-size: 12px;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.mensagem:empty { display: none; }
+.mensagem.erro { color: #c44966; }
+.mensagem.sucesso { color: #37966d; }
+
+/* ESCOLHA DO PET */
+
+.escolha-container {
+    max-width: 1080px;
+    padding: 36px 24px;
+    margin: auto;
+    text-align: center;
+}
+
+.marca {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--texto);
+    font-size: 22px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.etiqueta {
+    display: inline-block;
+    color: var(--rosa-escuro);
+    background: #ffedf5;
+    border-radius: 30px;
+    padding: 6px 10px;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.1px;
+}
+
+.escolha-container > .etiqueta {
+    display: table;
+    margin: 35px auto 10px;
+}
+
+.escolha-container h1 {
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    margin-bottom: 7px;
+}
+
+.texto-suave, .escolha-container > p {
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+.pets-escolha {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+    margin: 35px 0 24px;
+}
+
+.pet-escolha {
+    padding: 24px 12px 16px;
+    border: 1px solid var(--rosa-borda);
+    background: white;
+    border-radius: 22px;
+    box-shadow: var(--sombra);
+    color: var(--texto);
+    text-align: center;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+
+.pet-escolha:hover {
+    /* movimento de hover removido */
+    border-color: var(--rosa);
+    box-shadow: 0 15px 30px #e9a6c21c;
+}
+
+.pet-ilustracao {
+    display: grid;
+    place-items: center;
+    width: 105px;
+    height: 105px;
+    margin: auto auto 12px;
+    border-radius: 35px;
+    background: linear-gradient(145deg, #fff0f6, #f9eaff);
+    font-size: 58px;
+}
+
+.pet-escolha h3 {
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.tipo-pet {
+    display: inline-block;
+    color: var(--rosa-escuro);
+    background: #fff0f6;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 10px;
+    margin: 6px 0 12px;
+    font-weight: 900;
+}
+
+.pet-escolha div {
+    font-size: 12px;
+    margin: 4px 0;
+}
+
+.escolher-texto {
+    display: block;
+    margin-top: 18px;
+    padding: 10px 5px;
+    background: #fff0f6;
+    border-radius: 11px;
+    color: var(--rosa-escuro);
+    font-size: 11px;
+    font-weight: 900;
+}
+
+/* CABEÇALHO E LAYOUT PRINCIPAL */
+
+.topo {
+    min-height: 78px;
+    padding: 14px 28px;
+    background: white;
+    border-bottom: 1px solid #f1e2e9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.marca-topo {
+    font-size: 21px;
+    gap: 10px;
+}
+
+.marca-icone {
+    display: grid;
+    place-items: center;
+    background: #fff0f6;
+    border-radius: 14px;
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+}
+
+.marca-topo small {
+    display: block;
+    font-size: 9px;
+    color: var(--texto-suave);
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+.topo-direita {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.saldo, .nivel-chip, .usuario-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: #fff7fa;
+    border: 1px solid #f3e2eb;
+    border-radius: 30px;
+    padding: 9px 12px;
+    font-size: 12px;
+}
+
+.saldo strong, .nivel-chip strong { font-weight: 900; }
+
+.usuario-chip { background: white; }
+.usuario-chip > span:first-child { font-size: 18px; }
+
+.botao-sair {
+    border: 1px solid #f0dce6;
+    background: white;
+    border-radius: 12px;
+    padding: 10px 13px;
+    color: var(--rosa-escuro);
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.layout-jogo {
+    max-width: 1600px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    min-height: calc(100vh - 78px);
+}
+
+.menu-lateral {
+    background: #fff;
+    border-right: 1px solid #f1e2e9;
+    padding: 22px 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.perfil-mini {
+    border: 1px solid #f2dce7;
+    background: linear-gradient(160deg, #fff5fa, #fffafd);
+    border-radius: 18px;
+    padding: 17px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.perfil-pet {
+    display: grid;
+    place-items: center;
+    width: 63px;
+    height: 63px;
+    border-radius: 22px;
+    background: white;
+    box-shadow: 0 5px 18px #d9a6bd30;
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.perfil-mini strong { font-size: 14px; }
+.perfil-mini > span { font-size: 10px; color: var(--texto-suave); margin-top: 3px; }
+
+.mini-xp {
+    width: 100%;
+    height: 6px;
+    background: #f4dce7;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 12px 0 5px;
+}
+
+.mini-xp span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #e98fb4, #b58be8);
+    border-radius: inherit;
+}
+
+.perfil-mini small { font-size: 9px; color: var(--texto-suave); }
+
+.menu-titulo {
+    color: #b49baa;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.1px;
+    margin: 11px 10px 6px;
+}
+
+.item-menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    background: transparent;
+    color: #806b7b;
+    padding: 12px 11px;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 800;
+    transition: .2s;
+}
+
+.item-menu > span:first-child {
+    width: 23px;
+    font-size: 17px;
+    text-align: center;
+}
+
+.item-menu:hover {
+    background: #fff4f8;
+    color: var(--rosa-escuro);
+}
+
+.item-menu.ativo {
+    background: linear-gradient(100deg, #fce5ef, #fff0f6);
+    color: var(--rosa-escuro);
+    box-shadow: inset 3px 0 var(--rosa);
+}
+
+.menu-novo {
+    margin-left: auto;
+    background: #e75d9b;
+    color: white;
+    font-size: 7px;
+    border-radius: 6px;
+    padding: 4px 5px;
+    letter-spacing: .3px;
+}
+
+.menu-dica {
+    margin-top: auto;
+    border: 1px solid #f4e0ea;
+    background: #fff8fb;
+    padding: 14px;
+    border-radius: 15px;
+    font-size: 11px;
+}
+
+.menu-dica > span { font-size: 22px; display: block; margin-bottom: 6px; }
+.menu-dica strong { display: block; margin-bottom: 4px; }
+.menu-dica p { color: var(--texto-suave); line-height: 1.6; }
+
+.conteudo-jogo {
+    min-width: 0;
+    padding: 30px clamp(18px, 3vw, 44px);
+}
+
+.rodape-jogo {
+    margin-top: 40px;
+    border-top: 1px solid #f0dfe8;
+    padding: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: var(--texto-suave);
+    font-size: 11px;
+}
+
+.rodape-jogo span { color: var(--rosa-escuro); font-weight: 900; }
+
+/* TÍTULOS E CASA */
+
+.boas-vindas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.boas-vindas h1, .cabecalho-pagina h1 {
+    font-size: clamp(25px, 3vw, 35px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin: 8px 0 4px;
+}
+
+.boas-vindas p, .cabecalho-pagina p {
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+.cabecalho-pagina { margin-bottom: 25px; }
+.cabecalho-pagina h1 { margin-top: 10px; }
+
+.banner-casa {
+    min-height: 260px;
+    background: linear-gradient(110deg, #ffe8f1 0%, #fff0f6 50%, #f2eaff 100%);
+    border: 1px solid #f5d8e6;
+    border-radius: 25px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.banner-texto {
+    max-width: 450px;
+    position: relative;
+    z-index: 2;
+}
+
+.banner-texto h2 {
+    font-size: clamp(22px, 2.7vw, 32px);
+    line-height: 1.2;
+    margin: 12px 0;
+    font-weight: 900;
+}
+
+.banner-texto p {
+    color: #8b7182;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 370px;
+}
+
+.pet-casa-grande {
+    flex: 0 0 190px;
+    width: 190px;
+    height: 190px;
+    display: grid;
+    place-items: center;
+    background: #ffffffb8;
+    border: 1px solid #ffffff;
+    border-radius: 45% 55% 48% 52%;
+    font-size: 110px;
+    box-shadow: 0 15px 35px #d9a0bc2e;
+    animation: none;
+    position: relative;
+    z-index: 2;
+}
+
+.decoracao-casa {
+    position: absolute;
+    font-size: 35px;
+    opacity: .65;
+}
+.decoracao-casa-um { right: 30%; top: 20px; }
+.decoracao-casa-dois { right: 7%; bottom: 22px; }
+
+.resumo-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 28px 0 16px;
+}
+
+.resumo-titulo h2 { font-size: 18px; font-weight: 900; }
+.resumo-titulo p { font-size: 11px; color: var(--texto-suave); margin-top: 3px; }
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.status-card {
+    background: white;
+    border: 1px solid #f1e3eb;
+    border-radius: 17px;
+    padding: 15px;
+    box-shadow: 0 4px 16px #dba6bf0d;
+}
+
+.status-card > div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    margin: 11px 0;
+}
+
+.status-card strong { font-size: 11px; }
+.status-card b { font-size: 10px; color: var(--texto-suave); }
+
+.status-icone {
+    width: 37px;
+    height: 37px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+}
+.status-icone.rosa { background: #ffe6f0; }
+.status-icone.laranja { background: #fff0df; }
+.status-icone.amarelo { background: #fff6d9; }
+.status-icone.azul { background: #e5f5ff; }
+
+.barra-status {
+    width: 100%;
+    height: 7px;
+    background: #f4edf1;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.barra-status span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #ee9cbd, #d76f9f);
+    transition: width .3s ease;
+}
+
+#barraVida { background: linear-gradient(90deg, #f3a3be, #e978a5); }
+#barraFome { background: linear-gradient(90deg, #ffd27d, #f3ae61); }
+#barraFelicidade { background: linear-gradient(90deg, #ffe48a, #f2c65e); }
+#barraEnergia { background: linear-gradient(90deg, #a3dafa, #74b9e9); }
+
+.estatisticas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.estatistica-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    border: 1px solid #f1e3eb;
+    border-radius: 16px;
+    padding: 17px;
+}
+
+.estatistica-card > span { font-size: 26px; }
+.estatistica-card small { display: block; color: var(--texto-suave); font-size: 10px; margin-bottom: 4px; }
+.estatistica-card strong { font-size: 21px; font-weight: 900; }
+
+.destaque-minigame {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 20px;
+    border: 1px solid #e7dafa;
+    background: linear-gradient(110deg, #f3eaff, #fff0f7);
+}
+
+.destaque-icone {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    border-radius: 22px;
+    background: white;
+    font-size: 32px;
+}
+
+.destaque-minigame > div:nth-child(2) { flex: 1; }
+.destaque-minigame h2 { font-size: 18px; margin: 8px 0 5px; }
+.destaque-minigame p { color: var(--texto-suave); font-size: 12px; }
+
+/* CUIDADOS */
+
+.painel-pet-cuidados {
+    background: linear-gradient(120deg, #fff0f6, #f4edff);
+    border: 1px solid #f1d8e7;
+    border-radius: 22px;
+    padding: 23px;
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.pet-cuidados-emoji { font-size: 64px; margin-bottom: 8px; }
+.painel-pet-cuidados h2 { font-size: 22px; }
+.painel-pet-cuidados p { color: var(--texto-suave); font-size: 12px; margin-top: 5px; }
+
+.cuidados-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.acao-card {
+    background: white;
+    border: 1px solid #f0e0e9;
+    border-radius: 19px;
+    padding: 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.acao-card > span { font-size: 34px; margin-bottom: 12px; }
+.acao-card h3 { font-size: 16px; }
+.acao-card p { color: var(--texto-suave); font-size: 12px; line-height: 1.6; margin: 8px 0; min-height: 39px; }
+.acao-card small { color: var(--rosa-escuro); font-size: 10px; margin: auto 0 13px; }
+.acao-card button { width: 100%; }
+
+/* LOJA E INVENTÁRIO */
+
+.saldo-loja {
+    background: #fff0f6;
+    color: var(--rosa-escuro);
+    border: 1px solid #f4dce7;
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+.saldo-loja strong { font-size: 18px; }
+
+.loja-grid, .inventario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.produto-card, .item-inventario {
+    background: white;
+    border: 1px solid #f0e0e9;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.produto-card:hover, .item-inventario:hover {
+    /* movimento de hover removido */
+    box-shadow: var(--sombra);
+}
+
+.produto-emoji { font-size: 45px; margin-bottom: 13px; }
+.produto-tag { color: var(--rosa-escuro); background: #fff0f6; border-radius: 20px; padding: 5px 8px; font-size: 8px; font-weight: 900; letter-spacing: .7px; }
+.produto-card h3, .item-inventario h3 { margin-top: 12px; font-size: 15px; }
+.produto-card p, .item-inventario p { color: var(--texto-suave); font-size: 11px; line-height: 1.6; margin: 7px 0 12px; }
+.produto-card > strong { margin-top: auto; margin-bottom: 13px; font-size: 13px; }
+.produto-card button, .item-inventario button { width: 100%; }
+
+.inventario-vazio {
+    grid-column: 1 / -1;
+    background: white;
+    border: 1px dashed #e7c9d9;
+    border-radius: 22px;
+    padding: 40px 20px;
+    text-align: center;
+}
+.inventario-vazio > span { font-size: 45px; }
+.inventario-vazio h3 { margin: 12px 0 7px; }
+.inventario-vazio p { color: var(--texto-suave); font-size: 12px; margin-bottom: 18px; }
+
+.item-inventario .produto-emoji { align-self: center; }
+.item-inventario h3, .item-inventario p { align-self: center; text-align: center; }
+
+/* MINI GAME - CÉU DAS MOEDINHAS */
+
+.minigame-intro {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 20px;
+    margin-bottom: 22px;
+    border: 1px solid #e6d8f8;
+    border-radius: 20px;
+    background: linear-gradient(110deg, #fff0f7, #f1eaff);
+}
+
+.minigame-pet-mini {
+    display: grid;
+    place-items: center;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 23px;
+    background: white;
+    font-size: 42px;
+    box-shadow: 0 7px 18px #cba6dc24;
+}
+
+.minigame-intro > div:nth-child(2) { flex: 1; }
+.minigame-intro h2 { font-size: 17px; margin-bottom: 5px; }
+.minigame-intro p { font-size: 11px; color: var(--texto-suave); line-height: 1.6; }
+
+.recompensa-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 105px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #eadcf4;
+    border-radius: 15px;
+}
+.recompensa-info span { font-size: 24px; }
+.recompensa-info strong { font-size: 12px; }
+.recompensa-info small { color: var(--texto-suave); font-size: 9px; text-align: center; }
+
+.jogo-plataformas {
+    width: min(100%, 600px);
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 24px;
+    background: white;
+    border: 1px solid #e8d9f3;
+    box-shadow: 0 15px 40px #b79ad61a;
+}
+
+.minigame-topo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #fff;
+    border-bottom: 1px solid #eee2f4;
+}
+
+.minigame-topo > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 14px 10px;
+    text-align: center;
+}
+.minigame-topo > div + div { border-left: 1px solid #f1e7f5; }
+.minigame-topo span { font-size: 9px; letter-spacing: .7px; color: #a18aa9; font-weight: 900; }
+.minigame-topo strong { font-size: 20px; color: var(--texto); }
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    background: #dff4ff;
+    overflow: hidden;
+    line-height: 0;
+}
+
+#canvasMiniGame {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 7 / 10;
+    touch-action: none;
+}
+
+.sobreposicao-jogo {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(255, 248, 253, .70);
+    backdrop-filter: blur(4px);
+    line-height: normal;
+}
+
+.painel-inicio-jogo {
+    width: min(100%, 300px);
+    padding: 25px 20px;
+    border: 1px solid #f1d8e8;
+    border-radius: 22px;
+    background: rgba(255,255,255,.96);
+    text-align: center;
+    box-shadow: 0 15px 45px #9c79ae2b;
+}
+
+.icone-inicio-jogo {
+    display: block;
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.painel-inicio-jogo h2 {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.painel-inicio-jogo p {
+    color: var(--texto-suave);
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 17px;
+}
+
+.painel-inicio-jogo button { width: 100%; }
+
+.controles-minigame {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px;
+    background: white;
+}
+
+.controles-minigame > div:first-child { flex: 1; }
+.controles-minigame strong { font-size: 12px; }
+.controles-minigame p { color: var(--texto-suave); font-size: 11px; line-height: 1.6; margin-top: 5px; }
+
+.botoes-move { display: flex; gap: 10px; }
+
+.botao-movimento {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #eed7e7;
+    background: #fff0f6;
+    color: var(--rosa-escuro);
+    border-radius: 16px;
+    font-size: 26px;
+    font-weight: 900;
+    box-shadow: 0 4px 0 #e8cadb;
+    touch-action: none;
+    user-select: none;
+}
+.botao-movimento:active { box-shadow: none; }
+
+.dica-minigame {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 17px;
+    margin: 20px 0;
+    background: #fff7df;
+    border: 1px solid #f3e4b9;
+    border-radius: 15px;
+}
+.dica-minigame > span { font-size: 22px; }
+.dica-minigame p { color: #88744d; font-size: 11px; line-height: 1.7; }
+
+/* MAPA */
+
+.mapa-banner, .missao-banner {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 22px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background: linear-gradient(110deg, #e8f7ed, #f0f5ff);
+    border: 1px solid #dcefe3;
+}
+.mapa-banner > span, .missao-banner > span { font-size: 40px; }
+.mapa-banner h2, .missao-banner h2 { font-size: 17px; margin-bottom: 5px; }
+.mapa-banner p, .missao-banner p { color: var(--texto-suave); font-size: 11px; }
+
+.mapa-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.local-mapa {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 20px;
+    border-radius: 19px;
+    border: 1px solid #e4e8dc;
+    background: white;
+    color: var(--texto);
+    transition: transform .2s, box-shadow .2s;
+}
+.local-mapa:hover { box-shadow: var(--sombra); }
+.local-mapa > span { font-size: 40px; margin-bottom: 12px; }
+.local-mapa h3 { font-size: 14px; }
+.local-mapa p { color: var(--texto-suave); font-size: 11px; line-height: 1.6; margin: 7px 0 12px; }
+.local-mapa strong { color: #4d9b73; font-size: 11px; }
+.local-mapa small { color: var(--texto-suave); font-size: 10px; margin: 7px 0 12px; }
+.local-mapa b { color: var(--rosa-escuro); font-size: 11px; margin-top: auto; }
+
+/* MISSÕES */
+
+.missao-banner { background: linear-gradient(110deg, #fff2db, #fff4f8); border-color: #f2e3cf; }
+.lista-missoes { display: grid; gap: 12px; }
+
+.missao-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 17px;
+    background: white;
+    border: 1px solid #f0e0e9;
+    border-radius: 17px;
+}
+
+.missao-status {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #fff0f6;
+    font-size: 24px;
+}
+
+.missao-detalhes { flex: 1; min-width: 0; }
+.missao-detalhes h3 { font-size: 13px; }
+.missao-detalhes p { font-size: 11px; color: var(--texto-suave); margin: 4px 0; }
+.missao-recompensa { color: var(--rosa-escuro); font-size: 10px; font-weight: 900; }
+.missao-item.concluida { background: #f5fff8; border-color: #d8f0e1; }
+.missao-item.concluida .missao-status { background: #e2f7e9; }
+
+/* ARENA */
+
+.arena-aviso {
+    background: #fff8e6;
+    border: 1px solid #f2e3bd;
+    border-radius: 13px;
+    padding: 13px 15px;
+    color: #8c7444;
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+.arena-painel {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 18px;
+    padding: 28px 18px;
+    background: linear-gradient(120deg, #fff0f6, #f3eeff);
+    border: 1px solid #f0dce9;
+    border-radius: 22px;
+}
+
+.combatente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+}
+
+.combatente-etiqueta {
+    color: var(--rosa-escuro);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.combatente-emoji {
+    display: grid;
+    place-items: center;
+    width: 110px;
+    height: 110px;
+    margin: 14px 0;
+    background: white;
+    border: 1px solid #f0deea;
+    border-radius: 35px;
+    font-size: 65px;
+}
+
+.combatente h2 { font-size: 16px; }
+.combatente p, .combatente small { color: var(--texto-suave); font-size: 10px; margin: 5px 0; }
+.combatente .barra-combate { margin-top: 10px; max-width: 190px; }
+.versus { font-size: 22px; font-weight: 900; color: var(--rosa-escuro); font-style: italic; }
+
+.registro-batalha {
+    margin: 18px 0;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #eee0f4;
+    border-radius: 14px;
+    background: white;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.acoes-arena {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* EVOLUÇÃO */
+
+.evolucao-card {
+    max-width: 560px;
+    margin: auto;
+    text-align: center;
+    background: linear-gradient(150deg, #fff0f6, #f4edff);
+    border: 1px solid #f0dce9;
+    border-radius: 24px;
+    padding: 30px;
+}
+
+.pet-evolucao-emoji {
+    display: grid;
+    place-items: center;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 18px;
+    background: white;
+    border-radius: 40px;
+    font-size: 75px;
+    box-shadow: 0 10px 30px #d8b2d22b;
+}
+
+.evolucao-card h2 { font-size: 24px; margin: 10px 0; }
+.nivel-grande { color: var(--rosa-escuro); font-size: 13px; margin-bottom: 12px; }
+.nivel-grande strong { font-size: 23px; }
+.evolucao-card > p { color: var(--texto-suave); font-size: 11px; margin: 12px 0; }
+.barra-evolucao { max-width: 370px; margin: 0 auto 20px; height: 10px; }
+.atributos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.atributos-grid article { background: white; border: 1px solid #f0e0e9; border-radius: 17px; padding: 20px; text-align: center; }
+.atributos-grid span { display: block; font-size: 25px; margin-bottom: 7px; }
+.atributos-grid small { display: block; color: var(--texto-suave); font-size: 10px; }
+.atributos-grid strong { display: block; font-size: 22px; margin-top: 5px; }
+
+/* Cards de habilidades dos personagens */
+.pets-escolha { align-items: stretch; }
+.pets-escolha { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.pet-escolha { display: flex; flex-direction: column; min-height: 100%; padding: 22px 17px 16px; }
+.pet-escolha h3 { margin: 2px 0 0; }
+.tipo-pet { margin: 7px 0 13px; }
+.habilidades-pet { display: grid; gap: 11px; width: 100%; margin-top: 5px; text-align: left; }
+.habilidade-linha { display: grid; grid-template-columns: 1fr auto; gap: 5px 8px; align-items: center; font-size: 11px; }
+.habilidade-linha > span { color: var(--texto-suave); font-weight: 700; }
+.habilidade-linha b { color: var(--texto); font-size: 12px; }
+.habilidade-linha i, .atributo-trilho { display: block; grid-column: 1 / -1; height: 7px; overflow: hidden; border-radius: 20px; background: #f5eaf0; }
+.habilidade-linha i > span, .atributo-trilho i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #ed78aa, #a678db); }
+.escolher-texto { margin-top: auto; width: 100%; box-sizing: border-box; }
+.atributos-grid { align-items: stretch; }
+.atributo-card { box-shadow: 0 8px 24px #82556a0c; transition: transform .2s, box-shadow .2s; }
+.atributo-card:hover { box-shadow: 0 12px 28px #82556a18; }
+.atributo-card .atributo-trilho { margin-top: 12px; }
+@media (max-width: 1000px) { .pets-escolha { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .pets-escolha { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .pets-escolha { grid-template-columns: 1fr; } .atributos-grid { grid-template-columns: 1fr; } }
+
+.dica-evolucao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px;
+    margin-top: 20px;
+    border-radius: 15px;
+    background: #fff8df;
+    border: 1px solid #f2e7bd;
+}
+.dica-evolucao > span { font-size: 24px; }
+.dica-evolucao p { font-size: 11px; line-height: 1.7; color: #897448; }
+
+/* NOTIFICAÇÕES */
+
+.notificacao {
+    position: fixed;
+    top: 95px;
+    right: 22px;
+    max-width: min(360px, calc(100% - 44px));
+    padding: 14px 18px;
+    border-radius: 15px;
+    background: white;
+    border: 1px solid #f0d5e4;
+    box-shadow: 0 12px 35px #9c64831c;
+    color: var(--texto);
+    font-size: 12px;
+    line-height: 1.5;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: .25s;
+}
+
+.notificacao.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.recompensa-flutuante {
+    position: fixed;
+    z-index: 101;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #fff0c6, #fff8df);
+    color: #8b6824;
+    border: 1px solid #f1dc9b;
+    border-radius: 17px;
+    padding: 17px 22px;
+    box-shadow: 0 12px 35px #bda15a29;
+    font-weight: 900;
+    font-size: 13px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1100px) {
+    .layout-jogo { grid-template-columns: 205px minmax(0, 1fr); }
+    .status-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cuidados-grid, .loja-grid, .mapa-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pets-escolha { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+    .topo { padding: 12px 15px; flex-wrap: wrap; }
+    .topo-direita { flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .usuario-chip { display: none; }
+    .layout-jogo { display: block; }
+    .menu-lateral {
+        position: sticky;
+        top: 78px;
+        z-index: 9;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+        border-right: 0;
+        border-bottom: 1px solid #f1e2e9;
+        padding: 9px;
+        gap: 7px;
+    }
+    .perfil-mini, .menu-titulo, .menu-dica { display: none; }
+    .item-menu { width: auto; min-width: max-content; padding: 10px 12px; }
+    .item-menu.ativo { box-shadow: inset 0 -3px var(--rosa); }
+    .item-menu > span:first-child { width: auto; }
+    .menu-novo { display: none; }
+    .conteudo-jogo { padding: 23px 16px; }
+    .banner-casa { padding: 23px; }
+    .pet-casa-grande { width: 125px; height: 125px; flex-basis: 125px; font-size: 72px; }
+    .destaque-minigame { flex-wrap: wrap; }
+    .destaque-minigame button { width: 100%; }
+    .minigame-intro { flex-wrap: wrap; }
+    .recompensa-info { flex-direction: row; gap: 7px; width: 100%; justify-content: center; }
+    .recompensa-info small { text-align: left; }
+    .arena-painel { gap: 8px; padding: 20px 10px; }
+    .combatente-emoji { width: 80px; height: 80px; font-size: 48px; border-radius: 25px; }
+    .combatente h2 { font-size: 13px; }
+    .versus { font-size: 16px; }
+}
+
+@media (max-width: 520px) {
+    .login-card { padding: 25px 20px; }
+    .pets-escolha { gap: 10px; }
+    .pet-escolha { padding: 17px 8px 12px; }
+    .pet-ilustracao { width: 80px; height: 80px; font-size: 45px; }
+    .escolha-container { padding: 25px 13px; }
+    .boas-vindas { align-items: flex-start; flex-direction: column; }
+    .banner-casa { min-height: 0; padding: 20px; }
+    .banner-texto { max-width: 100%; }
+    .banner-texto h2 { font-size: 23px; }
+    .pet-casa-grande { position: absolute; right: -20px; bottom: -20px; width: 105px; height: 105px; font-size: 58px; opacity: .45; }
+    .status-grid, .estatisticas-grid, .cuidados-grid, .loja-grid, .mapa-grid, .inventario-grid { grid-template-columns: 1fr; }
+    .estatistica-card { padding: 14px; }
+    .estatistica-card strong { font-size: 18px; }
+    .missao-item { align-items: flex-start; flex-wrap: wrap; }
+    .missao-detalhes { width: calc(100% - 65px); }
+    .missao-item > button { width: 100%; }
+    .controles-minigame { align-items: flex-start; }
+    .controles-minigame p { max-width: 230px; }
+    .botao-movimento { width: 45px; height: 45px; }
+    .minigame-topo > div { padding: 12px 5px; }
+    .minigame-topo span { font-size: 8px; }
+    .minigame-topo strong { font-size: 17px; }
+    .rodape-jogo { flex-direction: column; }
+    .topo-direita .nivel-chip { display: none; }
+    .arena-painel { grid-template-columns: 1fr auto 1fr; }
+    .combatente-emoji { width: 65px; height: 65px; font-size: 39px; }
+    .acoes-arena .botao { flex: 1 1 45%; }
+    .atributos-grid { gap: 8px; }
+    .atributos-grid article { padding: 15px 8px; }
+    .destaque-icone { width: 55px; height: 55px; font-size: 25px; }
+    .destaque-minigame h2 { font-size: 16px; }
+}
+
+/* Grade dos dez personagens */
+@media (min-width: 1101px) { .pets-escolha { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 761px) and (max-width: 1100px) { .pets-escolha { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+/* Identidade personalizável do abrigo. */
+.identidade-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:880px}
+.identidade-card{padding:22px;background:#fff;border:1px solid #f0dce6;border-radius:17px;box-shadow:0 8px 24px #39263a0a}
+.identidade-card>label,.identidade-card h2{display:block;margin:0 0 5px;color:#493747;font-size:17px;font-weight:900}
+.identidade-card>p{margin:0 0 14px;color:#917d8c;font-size:12px;line-height:1.5}
+.campo-identidade{display:flex;gap:9px;align-items:center}
+.campo-identidade input{flex:1;min-width:0;min-height:44px;padding:10px 12px;border:1px solid #e6d9e2;border-radius:10px;background:#fffafd;color:#493747;font:inherit}
+.campo-identidade .botao{min-height:44px;white-space:nowrap}
+.identidade-card>small{display:block;margin-top:8px;color:#917d8c;font-size:11px}
+.escolha-tema{grid-column:1/-1}
+.opcoes-tema{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tema-opcao{display:grid;grid-template-columns:48px 1fr;grid-template-rows:auto auto;align-items:center;gap:2px 11px;padding:13px;text-align:left;color:#493747;background:#fffafd;border:1px solid #f0dce6;border-radius:13px;transition:border-color .2s,box-shadow .2s,transform .2s}
+.tema-opcao:hover{transform:translateY(-2px)}
+.tema-opcao[aria-pressed="true"]{border:2px solid #d76e9d;box-shadow:0 0 0 3px #f9e4ef}
+.tema-amostra{grid-row:1/3;display:grid;place-items:center;width:48px;height:48px;border-radius:13px;font-size:24px}
+.tema-amostra-claro{background:linear-gradient(145deg,#fff0f6,#f2eaff)}
+.tema-amostra-escuro{background:linear-gradient(145deg,#292231,#51405e)}
+.tema-opcao strong{font-size:13px}.tema-opcao small{color:#917d8c;font-size:10px}
+.identidade-preview{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:17px 20px;background:linear-gradient(110deg,#fff0f6,#f2eaff);border:1px solid #f3d8e4;border-radius:15px}
+.identidade-preview>span{color:#c75f91;font-size:10px;font-weight:900;letter-spacing:1px}
+.identidade-preview strong{color:#493747;font-size:17px}.identidade-preview small{margin-left:auto;color:#917d8c}
+.identidade-layout :focus-visible{outline:3px solid #6b9ff0;outline-offset:3px}
+
+/* Paleta noturna aplicada a todos os painéis principais do jogo. */
+body[data-tema="escuro"]{color-scheme:dark;--rosa-fundo:#18141d;--rosa-borda:#493746;--texto:#f4edf6;--texto-suave:#c4b5ca;--branco:#292230;--sombra:0 12px 35px rgba(0,0,0,.22);background:var(--rosa-fundo);color:var(--texto)}
+body[data-tema="escuro"] .topo,
+body[data-tema="escuro"] .menu-lateral,
+body[data-tema="escuro"] .usuario-chip,
+body[data-tema="escuro"] .saldo,
+body[data-tema="escuro"] .nivel-chip,
+body[data-tema="escuro"] .perfil-mini,
+body[data-tema="escuro"] .status-card,
+body[data-tema="escuro"] .estatistica-card,
+body[data-tema="escuro"] .identidade-card,
+body[data-tema="escuro"] .identidade-preview,
+body[data-tema="escuro"] .cartao-criatura,
+body[data-tema="escuro"] .cartao-meu-animal,
+body[data-tema="escuro"] .produto-card,
+body[data-tema="escuro"] .acao-card,
+body[data-tema="escuro"] .necessidade-pet,
+body[data-tema="escuro"] .progresso-cuidado,
+body[data-tema="escuro"] .atributo-card,
+body[data-tema="escuro"] .missao-item,
+body[data-tema="escuro"] .filtros-criaturas,
+body[data-tema="escuro"] .mapa-banner,
+body[data-tema="escuro"] .local-mapa,
+body[data-tema="escuro"] .arena-painel,
+body[data-tema="escuro"] .evolucao-card,
+body[data-tema="escuro"] .dica-evolucao,
+body[data-tema="escuro"] .minigame-intro,
+body[data-tema="escuro"] .minigame-topo>div,
+body[data-tema="escuro"] .tema-opcao{background:#292230;color:#f4edf6;border-color:#493b50}
+body[data-tema="escuro"] .conteudo-jogo{color:#f4edf6}
+body[data-tema="escuro"] .conteudo-jogo h1,
+body[data-tema="escuro"] .conteudo-jogo h2,
+body[data-tema="escuro"] .conteudo-jogo h3,
+body[data-tema="escuro"] .conteudo-jogo strong,
+body[data-tema="escuro"] .conteudo-jogo b,
+body[data-tema="escuro"] .conteudo-jogo label,
+body[data-tema="escuro"] .identidade-card>label{color:#f4edf6}
+body[data-tema="escuro"] .conteudo-jogo p,
+body[data-tema="escuro"] .conteudo-jogo small,
+body[data-tema="escuro"] .identidade-card>p,
+body[data-tema="escuro"] .identidade-card>small,
+body[data-tema="escuro"] .tema-opcao small{color:#c4b5ca}
+body[data-tema="escuro"] .campo-identidade input,
+body[data-tema="escuro"] .filtros-criaturas select,
+body[data-tema="escuro"] .busca-criaturas input{background:#1e1924;color:#f4edf6;border-color:#51435a}
+body[data-tema="escuro"] .menu-lateral{border-color:#493b50}
+body[data-tema="escuro"] .item-menu:not(.ativo){color:#d4c7d8}
+body[data-tema="escuro"] .item-menu.ativo{background:#493044;color:#ffd3e8}
+body[data-tema="escuro"] .banner-casa,
+body[data-tema="escuro"] .painel-pet-cuidados,
+body[data-tema="escuro"] .identidade-preview{background:linear-gradient(120deg,#302433,#28243a);border-color:#493b50}
+body[data-tema="escuro"] .identidade-preview>span{color:#f0a4c6}
+body[data-tema="escuro"] .tema-opcao[aria-pressed="true"]{border-color:#e98fb4;box-shadow:0 0 0 3px #e98fb433}
+body[data-tema="escuro"] .barra-status,
+body[data-tema="escuro"] .barra-necessidade,
+body[data-tema="escuro"] .atributo-trilho{background:#453b4b}
+body[data-tema="escuro"] .rodape-jogo{border-color:#493b50}
+body[data-tema="escuro"] .rodape-jogo span{color:#f0a4c6}
+body[data-tema="escuro"] .botao-claro{background:#332a39;color:#f4edf6;border-color:#57475f}
+body[data-tema="escuro"] .dialog-criatura{background:#292230;color:#f4edf6}
+body[data-tema="escuro"] .dialog-criatura input,
+body[data-tema="escuro"] .dialog-criatura select{background:#1e1924;color:#f4edf6;border-color:#51435a}
+@media(max-width:700px){.identidade-layout{grid-template-columns:1fr}.escolha-tema,.identidade-preview{grid-column:auto}.campo-identidade{align-items:stretch;flex-direction:column}.campo-identidade .botao{width:100%;justify-content:center}.identidade-preview{align-items:flex-start;flex-direction:column;gap:6px}.identidade-preview small{margin-left:0}}
+.missao-luta-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;margin:16px 0;padding:18px;background:linear-gradient(115deg,#fff0f6,#f0eaff);border:1px solid #efd8e8;border-radius:18px}
+.missao-luta-arte{display:flex;align-items:center;gap:9px;font-size:31px}
+.missao-luta-arte b{color:#d66d9c;font-size:14px;font-style:italic}
+.missao-luta-texto .etiqueta{font-size:9px}
+.missao-luta-texto h2{margin:4px 0;color:#493747;font-size:17px}
+.missao-luta-texto p{max-width:590px;color:#806e7e;font-size:11px;line-height:1.55}
+.missao-luta-card>.botao{white-space:nowrap}
+.combatente-emoji.golpe-avanca{animation:golpe-avanca .48s ease-in-out}
+.inimigo .combatente-emoji.golpe-inimigo{animation:golpe-inimigo .48s ease-in-out}
+.combatente-emoji.recebe-golpe{animation:recebe-golpe .42s ease-in-out}
+@keyframes golpe-avanca{0%,100%{transform:translateX(0) rotate(0)}45%{transform:translateX(32px) rotate(9deg) scale(1.08)}}
+@keyframes golpe-inimigo{0%,100%{transform:translateX(0) rotate(0)}45%{transform:translateX(-32px) rotate(-9deg) scale(1.08)}}
+@keyframes recebe-golpe{0%,100%{filter:none}25%{transform:translateX(-7px);filter:brightness(1.35) saturate(.75)}55%{transform:translateX(7px)}80%{transform:translateX(-4px)}}
+body[data-tema="escuro"] .missao-banner,
+body[data-tema="escuro"] .registro-batalha,
+body[data-tema="escuro"] .arena-aviso,
+body[data-tema="escuro"] .missao-luta-card{background:#292230;color:#f4edf6;border-color:#493b50}
+body[data-tema="escuro"] .missao-luta-texto h2,
+body[data-tema="escuro"] .missao-item h3,
+body[data-tema="escuro"] .combatente h2{color:#f4edf6}
+body[data-tema="escuro"] .missao-luta-texto p,
+body[data-tema="escuro"] .missao-detalhes p,
+body[data-tema="escuro"] .combatente p,
+body[data-tema="escuro"] .combatente small{color:#c4b5ca}
+body[data-tema="escuro"] .missao-recompensa,
+body[data-tema="escuro"] .combatente-etiqueta,
+body[data-tema="escuro"] .versus{color:#f0a4c6}
+body[data-tema="escuro"] .missao-item.concluida{background:#20332a;border-color:#365a47}
+body[data-tema="escuro"] .missao-item.concluida .missao-status{background:#30513d}
+body[data-tema="escuro"] .registro-adocao{background:#20332a;color:#c4efce!important}
+body[data-tema="escuro"] .arena-aviso{background:#3b3020;color:#f1d58b;border-color:#665337}
+body[data-tema="escuro"] .registro-batalha{background:#211b27}
+body[data-tema="escuro"] .missao-luta-arte b{color:#f0a4c6}
+@media(max-width:760px){.missao-luta-card{grid-template-columns:1fr;text-align:left}.missao-luta-arte{justify-content:center}.missao-luta-card>.botao{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.combatente-emoji.golpe-avanca,.inimigo .combatente-emoji.golpe-inimigo,.combatente-emoji.recebe-golpe{animation-duration:.01ms}}
+.arena-cenario{position:relative;isolation:isolate;min-height:365px;margin:0 0 18px;overflow:hidden;border:1px solid #54456e;border-radius:22px;background:#201b37;box-shadow:0 14px 34px #24143524}
+.arena-cenario-fundo{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 58%,#62517d 0,#383254 42%,#211d38 78%);}
+.arena-cenario-fundo::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 12%,#f5d98c18 27%,transparent 41%),linear-gradient(245deg,transparent 10%,#b8a1ff1c 28%,transparent 43%),radial-gradient(ellipse at 50% 90%,#f393ba33,transparent 48%)}
+.arena-cenario-fundo::after{content:"";position:absolute;left:0;right:0;bottom:85px;height:70px;opacity:.42;background:radial-gradient(ellipse at 8px 100%,#171329 0 7px,transparent 8px) 0 0/27px 34px repeat-x,radial-gradient(ellipse at 8px 100%,#171329 0 7px,transparent 8px) 13px 17px/27px 34px repeat-x}
+.arena-lua{position:absolute;top:17px;left:50%;z-index:0;transform:translateX(-50%);display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#eee7ff1a;box-shadow:0 0 55px #d7c4ff38;font-size:31px}
+.arena-holofote{position:absolute;top:0;width:26%;height:80%;opacity:.58;clip-path:polygon(30% 0,70% 0,100% 100%,0 100%);filter:blur(2px)}
+.arena-holofote-um{left:7%;background:linear-gradient(#ffe99a4d,transparent)}
+.arena-holofote-dois{right:7%;background:linear-gradient(#d9c1ff4d,transparent)}
+.arena-arquibancada{position:absolute;right:0;bottom:112px;left:0;height:44px;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#f7d898;font-size:19px;letter-spacing:4px;text-shadow:0 0 12px #f1c66a;opacity:.85}
+.arena-piso{position:absolute;right:0;bottom:0;left:0;height:108px;overflow:hidden;background:linear-gradient(180deg,#a46caa 0%,#734878 17%,#3d2a51 100%);border-top:3px solid #d597c5;box-shadow:0 -8px 28px #e3a5d544}
+.arena-piso::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(170deg,transparent 0 24px,#e8b9df19 25px 27px),linear-gradient(90deg,transparent 49.7%,#f2d5ed44 50%,transparent 50.3%)}
+.arena-piso::after{content:"";position:absolute;top:12px;left:50%;width:90px;height:90px;transform:translateX(-50%) rotate(45deg);border:2px solid #f4d5e933;border-radius:12px}
+.arena-piso i{position:absolute;top:0;bottom:0;left:25%;width:2px;background:#f4d5e922;transform:skewX(-18deg)}
+.arena-piso i:nth-child(2){left:75%;transform:skewX(18deg)}
+.arena-piso i:nth-child(3){left:50%;top:0;bottom:auto;width:0;height:100%;border-left:1px dashed #f4d5e933;background:transparent}
+.arena-cenario .arena-painel{position:relative;z-index:1;min-height:365px;align-items:flex-start;padding:72px 22px 34px;background:transparent;border:0;border-radius:0}
+.arena-cenario .combatente{position:relative;z-index:1;min-height:252px;padding:5px 10px 26px}
+.arena-cenario .combatente::before{content:"";position:absolute;z-index:-1;top:0;left:50%;width:min(230px,100%);height:240px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse,#fae7ff20 0,transparent 70%)}
+.arena-cenario .combatente-emoji{background:#f8efffdd;border:2px solid #efd4f3;box-shadow:0 10px 24px #140d2a55}
+.arena-cenario .combatente h2,.arena-cenario .combatente p,.arena-cenario .combatente small{color:#fff8ff;text-shadow:0 1px 4px #1c142eaa}
+.arena-cenario .combatente-etiqueta{padding:5px 9px;border-radius:20px;background:#221b3da8;color:#ffde9b}
+.arena-cenario .versus{z-index:2;align-self:center;margin-top:25px;padding:9px 13px;color:#fff;background:linear-gradient(135deg,#e94c76,#9d4dc4);border:2px solid #ffd4e5;border-radius:50%;box-shadow:0 0 22px #f06b9a8c;font-size:16px;font-style:normal}
+.arena-cenario .barra-status{box-shadow:0 2px 9px #16102788}
+.arena-cenario .combatente-emoji.golpe-avanca{animation:golpe-avanca .48s ease-in-out}
+body[data-tema="escuro"] .arena-cenario .arena-painel{background:transparent;border:0}
+body[data-tema="escuro"] .arena-cenario .combatente-emoji{background:#40334c;border-color:#756184}
+.svg-sprite{position:absolute;width:0;height:0;overflow:hidden}
+@media(max-width:760px){.arena-cenario,.arena-cenario .arena-painel{min-height:330px}.arena-cenario .arena-painel{padding:70px 8px 30px}.arena-cenario .combatente{padding-right:3px;padding-left:3px}.arena-cenario .combatente-emoji{width:76px;height:76px;font-size:45px}.arena-cenario .versus{margin-top:24px;padding:7px 9px;font-size:13px}.arena-arquibancada{font-size:14px;letter-spacing:0}}
+@media(prefers-reduced-motion:reduce){.arena-cenario *{scroll-behavior:auto}}
+.mapa-exploracao{margin-top:20px;padding:18px;background:var(--branco);border:1px solid var(--rosa-borda);border-radius:18px;box-shadow:var(--sombra)}
+.mapa-exploracao-topo{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.mapa-exploracao-topo h2{margin:7px 0 3px;font-size:22px;color:var(--texto)}
+.mapa-exploracao-topo p{color:var(--texto-suave);font-size:12px;line-height:1.5}
+.mapa-exploracao-topo .botao{flex:none}
+.palco-exploracao{position:relative;isolation:isolate;min-height:380px;overflow:hidden;border:3px solid #fff;border-radius:18px;background-color:#8dd58b;box-shadow:inset 0 0 0 1px #365a4655}
+.palco-exploracao::before{content:"";position:absolute;z-index:0;inset:0;background:repeating-linear-gradient(20deg,#fff0 0 46px,#ffffff12 47px 49px),radial-gradient(ellipse at 14% 27%,#abeb8c 0 13%,transparent 13.5%),radial-gradient(ellipse at 75% 18%,#b1e88f 0 16%,transparent 16.5%),radial-gradient(ellipse at 42% 82%,#a4e286 0 19%,transparent 19.5%),linear-gradient(145deg,#7ec878,#b3e890)}
+.palco-exploracao::after{content:"";position:absolute;z-index:0;inset:0;background:radial-gradient(ellipse at center,transparent 45%,#24452c22 100%);pointer-events:none}
+.palco-exploracao[data-cenario="floresta"]{background-color:#397847}
+.palco-exploracao[data-cenario="floresta"]::before{background:repeating-linear-gradient(90deg,#ffffff09 0 42px,#153e2810 43px 46px),radial-gradient(ellipse at 18% 18%,#73ab56 0 16%,transparent 17%),radial-gradient(ellipse at 80% 26%,#56964f 0 19%,transparent 20%),radial-gradient(ellipse at 42% 83%,#76b957 0 21%,transparent 22%),linear-gradient(145deg,#316949,#7cb865)}
+.palco-exploracao[data-cenario="praia"]{background-color:#67d4e2}
+.palco-exploracao[data-cenario="praia"]::before{background:linear-gradient(90deg,#49bed7 0 23%,transparent 23%),radial-gradient(ellipse at 54% 22%,#fff3bb 0 16%,transparent 16.5%),radial-gradient(ellipse at 74% 77%,#f6df9a 0 24%,transparent 24.5%),linear-gradient(140deg,#a4e7d3,#f6db91 74%)}
+.palco-exploracao[data-cenario="montanha"]{background-color:#a9d9ec}
+.palco-exploracao[data-cenario="montanha"]::before{background:linear-gradient(140deg,transparent 0 32%,#8ca7a6 32.5% 48%,transparent 48.5%),linear-gradient(35deg,transparent 0 43%,#738d92 43.5% 61%,transparent 61.5%),radial-gradient(ellipse at 65% 78%,#9bd186 0 25%,transparent 25.5%),linear-gradient(#a8ddf4 0 52%,#85bd7c 53%)}
+.palco-exploracao[data-cenario="castelo"]{background-color:#bcaecb}
+.palco-exploracao[data-cenario="castelo"]::before{background:repeating-linear-gradient(0deg,transparent 0 58px,#64567520 59px 62px),repeating-linear-gradient(90deg,transparent 0 76px,#64567520 77px 80px),radial-gradient(ellipse at 25% 25%,#e4d5eb 0 18%,transparent 19%),linear-gradient(135deg,#b8a7c8,#dfcee2)}
+.decoracoes-exploracao{position:absolute;inset:0;pointer-events:none}
+.decoracao-mapa-item{position:absolute;z-index:1;transform:translate(-50%,-50%);font-size:clamp(26px,4vw,42px);filter:drop-shadow(0 4px 3px #2432273d);user-select:none}
+.caminho-exploracao{position:absolute;z-index:0;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.caminho-exploracao path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.trilha-sombra{stroke:#334d3460;stroke-width:42;transform:translateY(5px)}
+.trilha-piso{stroke:#f4dfad;stroke-width:34}
+.trilha-centro{stroke:#fff8d9;stroke-width:3;stroke-dasharray:3 16;opacity:.95}
+.palco-exploracao[data-cenario="praia"] .trilha-piso{stroke:#f8e7b6}
+.palco-exploracao[data-cenario="montanha"] .trilha-piso{stroke:#ded7c0}
+.palco-exploracao[data-cenario="castelo"] .trilha-piso{stroke:#e2d7e8}
+.pet-explorando{position:absolute;z-index:3;left:8%;top:72%;display:grid;place-items:center;width:50px;height:50px;transform:translate(-50%,-50%);border:3px solid #fff;border-radius:17px;background:#fff9;box-shadow:0 5px 11px #233c3c44;font-size:34px;transition:left .22s cubic-bezier(.2,.75,.25,1),top .22s cubic-bezier(.2,.75,.25,1);user-select:none;will-change:left,top}
+.destino-exploracao{position:absolute;z-index:4;left:88%;top:22%;display:grid;justify-items:center;gap:1px;transform:translate(-50%,-50%);padding:5px 8px;border-radius:12px;background:#fff9;box-shadow:0 4px 12px #203b3955}
+.destino-exploracao span{font-size:31px;line-height:1}
+.destino-exploracao small{color:#493747;font-size:9px;font-weight:900}
+.passeio-concluido .destino-exploracao{animation:destino-brilha .75s ease-in-out infinite alternate}
+@keyframes destino-brilha{to{filter:drop-shadow(0 0 12px #fff67a);transform:translate(-50%,-50%) scale(1.1)}}
+.controles-exploracao{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:13px}
+.controles-exploracao>p{color:var(--texto-suave);font-size:11px;line-height:1.7}
+.controles-exploracao kbd{display:inline-grid;place-items:center;min-width:22px;height:23px;margin:0 2px;padding:0 5px;border:1px solid var(--rosa-borda);border-radius:6px;background:var(--rosa-fundo);color:var(--texto);font:inherit;font-size:10px;font-weight:700}
+.setas-exploracao{display:grid;justify-items:center;gap:5px;flex:none}
+.setas-exploracao>div{display:flex;gap:5px}
+.setas-exploracao button{width:42px;height:38px;border:1px solid #e6c5d7;border-radius:10px;background:#fff;color:#784761;font-weight:900;box-shadow:0 2px 5px #60374a17;touch-action:manipulation}
+.setas-exploracao button:hover:not(:disabled){background:#ffe8f2;transform:translateY(-1px)}
+.setas-exploracao button:disabled{opacity:.5}
+.setas-exploracao button:focus-visible{outline:3px solid #4589ec;outline-offset:2px}
+body[data-tema="escuro"] .mapa-exploracao{background:#292230;border-color:#493b50}
+body[data-tema="escuro"] .mapa-exploracao-topo h2{color:#f4edf6}
+body[data-tema="escuro"] .mapa-exploracao-topo p{color:#c4b5ca}
+body[data-tema="escuro"] .controles-exploracao kbd{background:#1e1924;border-color:#51435a;color:#f4edf6}
+body[data-tema="escuro"] .setas-exploracao button{background:#332a39;color:#f4edf6;border-color:#57475f}
+body[data-tema="escuro"] .setas-exploracao button:hover:not(:disabled){background:#493044}
+@media(max-width:650px){.mapa-exploracao{padding:12px}.mapa-exploracao-topo{align-items:flex-start;flex-direction:column}.mapa-exploracao-topo .botao{width:100%;justify-content:center}.palco-exploracao{min-height:310px}.controles-exploracao{align-items:center;flex-direction:column;text-align:center}.controles-exploracao>p{line-height:2}.setas-exploracao button{width:50px;height:43px}}
+@media(prefers-reduced-motion:reduce){.pet-explorando{transition:none}.passeio-concluido .destino-exploracao{animation-duration:.01ms}}
+/* Catálogo do abrigo: cartões, filtros, painel e formulário inclusivo. */
+.filtros-criaturas{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:22px 0 16px;padding:14px;background:#fff;border:1px solid #f0e9ef;border-radius:14px}.filtros-criaturas>label{display:flex;align-items:center;gap:7px;font-size:12px;color:#766c7a}.filtros-criaturas select,.busca-criaturas input{border:1px solid #e8e2ea;border-radius:9px;padding:9px 10px;background:#fff;color:#514453;font:inherit;font-size:12px}.busca-criaturas{flex:1;min-width:220px}.busca-criaturas input{flex:1;min-width:150px}.favoritos-toggle input{accent-color:#d66b92}.grade-criaturas{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:35px}.cartao-criatura{background:#fff;border:1px solid #eee5ec;border-radius:16px;overflow:hidden;box-shadow:0 6px 20px #39263a0a}.cartao-criatura.criatura-disponivel{border-top:4px solid #55bf91}.cartao-criatura.criatura-adotada{border-top:4px solid #a9b0bf}.arte-criatura{height:130px;background:linear-gradient(135deg,#fff0f5,#eef7ff);display:grid;place-items:center;position:relative}.emoji-criatura{font-size:66px}.arte-criatura img{width:100%;height:100%;object-fit:cover}.status-criatura{position:absolute;top:10px;left:10px;background:#e1f7eb;color:#258255;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:700}.criatura-adotada .status-criatura{background:#edf0f4;color:#667085}.favorito-criatura{position:absolute;top:8px;right:9px;border:0;background:#fff;border-radius:50%;width:32px;height:32px;color:#e99531;font-size:21px;cursor:pointer}.corpo-criatura{padding:14px}.corpo-criatura h3{margin:0;color:#49384a;font-size:19px}.corpo-criatura p{font-size:12px;line-height:1.5;color:#827684}.energia-criatura{font-weight:700;color:#56789a!important}.descricao-criatura{min-height:36px}.acoes-criatura{display:flex;flex-wrap:wrap;gap:7px}.acoes-criatura .botao{flex:1;justify-content:center;padding:8px;font-size:12px}.sem-criaturas{grid-column:1/-1;text-align:center;background:#fff;padding:30px;border-radius:13px;color:#766c7a}.registro-adocao{background:#f3fbf6;padding:9px;border-radius:8px;color:#35765b!important}.dialog-criatura{width:min(540px,calc(100% - 28px));border:0;border-radius:18px;padding:0;box-shadow:0 20px 60px #34223c44;color:#463746}.dialog-criatura::backdrop{background:#22203888;backdrop-filter:blur(3px)}.dialog-criatura form{display:grid;gap:13px;padding:24px}.dialog-criatura h2{margin:0 0 5px}.dialog-criatura label{display:grid;gap:6px;font-weight:700;font-size:13px}.dialog-criatura input,.dialog-criatura select{width:100%;box-sizing:border-box;border:1px solid #ded8e0;border-radius:9px;padding:10px;font:inherit;font-weight:400;min-height:40px}.linha-form-criatura{display:grid;grid-template-columns:1fr 1fr;gap:12px}.acoes-form-criatura{display:flex;justify-content:flex-end;gap:9px;margin-top:5px}.dialog-criatura :focus-visible,.filtros-criaturas :focus-visible,.cartao-criatura button:focus-visible{outline:3px solid #4b8df6;outline-offset:2px}
+@media(max-width:650px){.filtros-criaturas{align-items:stretch}.filtros-criaturas>label{justify-content:space-between;flex:1 1 40%}.busca-criaturas{flex-basis:100%!important}.grade-criaturas{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}.linha-form-criatura{grid-template-columns:1fr}.acoes-criatura .botao{font-size:11px;padding:7px 5px}}
+/* Resumo das necessidades logo abaixo do pet na página Cuidados. */
+.necessidades-pet{width:min(720px,calc(100% - 32px));display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px auto 4px;text-align:left}.necessidade-pet{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;background:#ffffffc9;border:1px solid #f0dce9;border-radius:13px}.necessidade-pet>span{font-size:22px}.necessidade-conteudo{flex:1;min-width:0}.necessidade-cabecalho{display:flex;justify-content:space-between;gap:8px;align-items:center;color:#563f57;font-size:13px}.necessidade-cabecalho b{font-size:12px;color:#867487}.barra-necessidade{height:8px;border-radius:8px;background:#efeaf0;overflow:hidden;margin:8px 0 6px}.barra-necessidade span{display:block;height:100%;width:100%;border-radius:inherit;background:#55bd8b;transition:width .25s,background .25s}.barra-necessidade span[data-nivel="medio"]{background:#e6ab4c}.barra-necessidade span[data-nivel="baixo"]{background:#e66e79}.necessidade-pet small{font-size:11px;line-height:1.4;color:#6f6372}.necessidade-pet:has([data-nivel="baixo"]){background:#fff5f4;border-color:#f0c4c3}.icone-moeda{display:inline-flex;align-items:center;justify-content:center;font-size:1.15em;line-height:1;filter:drop-shadow(0 1px 1px #9a6b16aa);vertical-align:-.12em}
+@media(max-width:600px){.necessidades-pet{grid-template-columns:1fr;width:calc(100% - 24px)}.necessidade-pet{padding:11px}}
+.coin-icon{display:inline-block;width:1.18em;height:1.18em;object-fit:contain;vertical-align:-.22em;filter:drop-shadow(0 1px 1px #9a6b1680)}
+.saldo-loja .coin-icon,.saldo .coin-icon,.estatistica-card .coin-icon{width:1.3em;height:1.3em;vertical-align:-.3em}
+.progresso-cuidados{width:min(720px,calc(100% - 32px));margin:18px auto 2px;text-align:left}
+.progresso-cuidados h3{margin:0 0 4px;color:#49384a;font-size:15px}
+.progresso-cuidados>p{margin:0 0 12px;color:#827684;font-size:11px;line-height:1.5}
+.progresso-cuidados-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.progresso-cuidado{padding:12px 14px;background:#ffffffc9;border:1px solid #f0dce9;border-radius:12px}
+.progresso-cuidado .necessidade-cabecalho{font-size:12px}
+.progresso-cuidado .barra-necessidade span{background:linear-gradient(90deg,#ef88b5,#ae6bd4)}
+.progresso-cuidado small{display:block;min-height:15px;color:#6f6372;font-size:10px;line-height:1.4}
+@media(max-width:600px){.progresso-cuidados{width:calc(100% - 24px)}.progresso-cuidados-grid{grid-template-columns:1fr}}
+/* Coleção particular separada dos animais ainda disponíveis para adoção. */
+.cartao-meu-animal{background:#fff;border:1px solid #eee5ec;border-radius:16px;padding:14px;text-align:center;box-shadow:0 6px 20px #39263a0a}.cartao-meu-animal.companheiro-principal{border-top:4px solid #d983b1}.arte-meu-animal{height:115px;border-radius:12px;background:linear-gradient(135deg,#fff0f5,#eef7ff);display:grid;place-items:center;font-size:65px;overflow:hidden}.arte-meu-animal img{width:100%;height:100%;object-fit:cover}.cartao-meu-animal h3{margin:12px 0 4px;color:#49384a}.cartao-meu-animal>p{margin:4px 0 10px;font-size:12px;color:#827684}.status-meu-animal{display:inline-block;background:#e5f7ed;color:#278258;border-radius:20px;padding:6px 10px;font-size:11px;font-weight:700}.historia-meu-animal{margin-top:10px!important;padding:10px;background:#f8f5fb;border-radius:9px;font-style:italic;line-height:1.5}
+.acoes-boas-vindas{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:9px}.cartao-meu-animal>button{margin:12px auto 0;min-width:100%;justify-content:center}.cartao-meu-animal>button:disabled{opacity:.75;cursor:default}
+@media(max-width:650px){.acoes-boas-vindas{justify-content:flex-start}.acoes-boas-vindas .botao{flex:1}}
+
+
+.fases-batalha-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0 25px}
+.fase-batalha-card{background:#fff;border:1px solid var(--rosa-borda);border-radius:19px;padding:16px;box-shadow:var(--sombra);display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-width:0}
+.fase-batalha-card.bloqueada{opacity:.66;background:#fffafd}
+.fase-batalha-card h3{font-size:16px;line-height:1.35}
+.fase-batalha-card p{font-size:12px;color:var(--texto-suave);line-height:1.6;flex:1}
+.fase-batalha-card button{width:100%;font-size:11px;padding:10px 8px}
+.fase-batalha-card button:disabled{filter:grayscale(.5)}
+.fase-batalha-arte{width:100%;min-height:100px;border-radius:14px;display:grid;place-items:center;font-size:30px;letter-spacing:3px;background:linear-gradient(135deg,#e5f7ff,#f7e9ff)}
+.fase-arte-corrida{background:linear-gradient(135deg,#e4f6ff,#e9e2ff)}
+.fase-arte-dragao{background:linear-gradient(135deg,#ffe8df,#fff0f6)}
+.fase-status{display:inline-flex;background:#fff0f6;color:var(--rosa-escuro);border-radius:20px;padding:5px 9px;font-size:10px;font-weight:900}
+.jogo-fase-batalha{padding:18px;background:white;border:1px solid var(--rosa-borda);border-radius:20px;margin:20px 0;box-shadow:var(--sombra)}
+.jogo-fase-batalha.oculto{display:none}
+.jogo-fase-topo{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.jogo-fase-topo h2{font-size:22px;margin:7px 0 3px}
+.jogo-fase-topo p{font-size:12px;color:var(--texto-suave);line-height:1.5}
+#canvasFaseBatalha{display:block;width:100%;height:auto;max-height:65vh;aspect-ratio:900/440;background:#eaf5ff;border-radius:14px;border:1px solid #ead8e2;touch-action:none}
+.controles-fase{display:flex;justify-content:center;gap:12px;margin:12px 0}
+.controles-fase button{border:1px solid var(--rosa-borda);background:#fff0f6;color:var(--rosa-escuro);border-radius:12px;padding:12px 20px;font-size:17px;font-weight:900;touch-action:none;user-select:none}
+.mensagem-jogo-fase{font-size:13px;text-align:center;font-weight:800;color:var(--rosa-escuro);padding:8px}
+@media(max-width:900px){.fases-batalha-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.fases-batalha-grid{grid-template-columns:1fr}.fase-batalha-card{display:grid;grid-template-columns:90px minmax(0,1fr);column-gap:12px}.fase-batalha-arte{grid-row:span 3;min-height:90px;font-size:24px}.fase-batalha-card .fase-status,.fase-batalha-card h3,.fase-batalha-card p,.fase-batalha-card button{grid-column:2}jogo-fase-topo{align-items:flex-start;flex-direction:column}.controles-fase button{padding:12px 14px;flex:1}}
+
+/* Ajustes extras de contraste no modo escuro: fases, formulários, botões e painéis. */
+body[data-tema="escuro"] .fase-batalha-card,
+body[data-tema="escuro"] .fase-batalha-card.bloqueada,
+body[data-tema="escuro"] .jogo-fase-batalha,
+body[data-tema="escuro"] .minigame-card,
+body[data-tema="escuro"] .cartao,
+body[data-tema="escuro"] .painel,
+body[data-tema="escuro"] .modal-conteudo,
+body[data-tema="escuro"] .formulario-card,
+body[data-tema="escuro"] .lista-vazia,
+body[data-tema="escuro"] .detalhe-pet,
+body[data-tema="escuro"] .cartao-info,
+body[data-tema="escuro"] .painel-conteudo {
+  background:#292230;
+  color:#f7f0fa;
+  border-color:#594762;
+}
+body[data-tema="escuro"] .fase-batalha-card h3,
+body[data-tema="escuro"] .jogo-fase-topo h2,
+body[data-tema="escuro"] .fase-batalha-card strong,
+body[data-tema="escuro"] .jogo-fase-batalha strong {
+  color:#fff7ff;
+}
+body[data-tema="escuro"] .fase-batalha-card p,
+body[data-tema="escuro"] .jogo-fase-topo p,
+body[data-tema="escuro"] .jogo-fase-batalha small {
+  color:#d7c9df;
+}
+body[data-tema="escuro"] .fase-status {
+  background:#513047;
+  color:#ffd9eb;
+  border:1px solid #875273;
+}
+body[data-tema="escuro"] .fase-batalha-arte,
+body[data-tema="escuro"] .fase-arte-corrida,
+body[data-tema="escuro"] .fase-arte-dragao {
+  background:linear-gradient(135deg,#393047,#46334b);
+  border:1px solid #5e4968;
+}
+body[data-tema="escuro"] #canvasFaseBatalha {
+  border-color:#66516f;
+  background:#242033;
+}
+body[data-tema="escuro"] .controles-fase button {
+  background:#493044;
+  color:#ffe5f1;
+  border-color:#875273;
+}
+body[data-tema="escuro"] .controles-fase button:hover,
+body[data-tema="escuro"] .controles-fase button:focus-visible {
+  background:#633c57;
+  color:#fff;
+}
+body[data-tema="escuro"] .mensagem-jogo-fase {
+  color:#ffb9d7;
+}
+body[data-tema="escuro"] input,
+body[data-tema="escuro"] textarea,
+body[data-tema="escuro"] select {
+  color:#f7f0fa;
+  background:#211b29;
+  border-color:#62506d;
+}
+body[data-tema="escuro"] input::placeholder,
+body[data-tema="escuro"] textarea::placeholder {
+  color:#b9a9c2;
+  opacity:1;
+}
+body[data-tema="escuro"] button:disabled,
+body[data-tema="escuro"] .botao:disabled {
+  color:#c6b9cc;
+  background:#39303f;
+  border-color:#51445a;
+  opacity:1;
+}
+body[data-tema="escuro"] .botao-secundario,
+body[data-tema="escuro"] .botao-claro {
+  color:#f7f0fa;
+  background:#39303f;
+  border-color:#62506d;
+}
+body[data-tema="escuro"] table,
+body[data-tema="escuro"] th,
+body[data-tema="escuro"] td {
+  color:#f4edf6;
+  border-color:#51445a;
+}
+body[data-tema="escuro"] th { background:#39303f; }
+body[data-tema="escuro"] tr:nth-child(even) { background:#2b2432; }
+body[data-tema="escuro"] a:not(.botao):not(.item-menu) { color:#f2a9cd; }
+body[data-tema="escuro"] .fase-batalha-card.bloqueada { opacity:1; }
+body[data-tema="escuro"] .fase-batalha-card.bloqueada::after { color:#d7c9df; }
+
+/* Melhor contraste das notificações no modo escuro */
+body[data-tema="escuro"] .notificacao {
+    background: #34283b;
+    color: #fff4fb;
+    border-color: #80516f;
+    box-shadow: 0 12px 35px #00000066;
+}
+body[data-tema="escuro"] .notificacao strong,
+body[data-tema="escuro"] .notificacao b {
+    color: #ffd3e8;
+}

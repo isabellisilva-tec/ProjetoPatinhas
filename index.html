@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patinhas 🐾 | Cuide, evolua e aventure-se!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Ícone da moeda definido no próprio HTML para não depender de um arquivo separado. -->
+    <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+            <radialGradient id="gradienteMoeda" cx="35%" cy="28%" r="72%">
+                <stop offset="0" stop-color="#fff4a6"/><stop offset=".58" stop-color="#ffd84d"/><stop offset="1" stop-color="#efa51b"/>
+            </radialGradient>
+        </defs>
+        <symbol id="iconeMoeda" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="21" fill="#a96812"/>
+            <circle cx="24" cy="22" r="19" fill="url(#gradienteMoeda)" stroke="#6b4214" stroke-width="2.5"/>
+            <circle cx="24" cy="22" r="14.5" fill="none" stroke="#fff0a3" stroke-width="2"/>
+            <path d="M29.2 15.7c-1.2-1.4-3-2.2-5.2-2.2-3.4 0-5.7 1.8-5.7 4.4 0 2.5 1.8 3.6 5.4 4.4 3.2.7 4.7 1.5 4.7 3.4 0 2.1-2 3.6-5 3.6-2.1 0-4.2-.9-5.5-2.4M24 10.5v23" fill="none" stroke="#9a5a0c" stroke-linecap="round" stroke-width="2.7"/>
+            <path d="M24 4.8v2M24 37.2v2M6.8 22h2M39.2 22h2" stroke="#fff0a3" stroke-linecap="round" stroke-width="1.5"/>
+        </symbol>
+    </svg>
+
+    <div id="notificacao" class="notificacao"></div>
+
+    <!-- LOGIN -->
+    <section id="telaLogin" class="tela ativa">
+        <div class="login-fundo">
+            <div class="login-decoracao decoracao-um">🐾</div>
+            <div class="login-decoracao decoracao-dois">💗</div>
+
+            <div class="login-card">
+                <div class="logo-grande">🐾</div>
+                <h1>Patinhas</h1>
+                <p class="subtitulo">Um mundo de amor, aventuras e patinhas!</p>
+
+                <div id="areaLogin">
+                    <h2>Que bom ter você aqui!</h2>
+                    <p>Entre para continuar sua aventura.</p>
+
+                    <form id="formLogin">
+                        <label for="loginEmail">E-mail</label>
+                        <input id="loginEmail" type="email" placeholder="Digite seu e-mail" required>
+
+                        <label for="loginSenha">Senha</label>
+                        <input id="loginSenha" type="password" placeholder="Digite sua senha" required>
+
+                        <button class="botao botao-principal botao-largo" type="submit">
+                            Entrar 🐾
+                        </button>
+                    </form>
+
+                    <p class="troca-formulario">
+                        Ainda não tem uma conta?
+                        <button id="irCadastro" class="botao-texto" type="button">Criar conta</button>
+                    </p>
+                </div>
+
+                <div id="areaCadastro" class="oculto">
+                    <h2>Crie sua conta!</h2>
+                    <p>Prepare-se para conhecer seu novo melhor amigo.</p>
+
+                    <form id="formCadastro">
+                        <label for="cadastroNome">Seu nome</label>
+                        <input id="cadastroNome" type="text" placeholder="Como podemos te chamar?" required>
+
+                        <label for="cadastroEmail">E-mail</label>
+                        <input id="cadastroEmail" type="email" placeholder="Digite seu e-mail" required>
+
+                        <label for="cadastroSenha">Senha</label>
+                        <input id="cadastroSenha" type="password" minlength="4" placeholder="Crie uma senha" required>
+
+                        <label for="confirmarSenha">Confirmar senha</label>
+                        <input id="confirmarSenha" type="password" minlength="4" placeholder="Digite novamente" required>
+
+                        <button class="botao botao-principal botao-largo" type="submit">
+                            Criar minha conta 💗
+                        </button>
+                    </form>
+
+                    <p class="troca-formulario">
+                        Já tem uma conta?
+                        <button id="irLogin" class="botao-texto" type="button">Voltar para login</button>
+                    </p>
+                </div>
+
+                <p id="mensagemLogin" class="mensagem" role="alert" aria-live="assertive"></p>
+                <div class="login-rodape">Feito com amor para quem ama os animais 💕</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOGO PRINCIPAL -->
+    <section id="telaJogo" class="tela">
+
+        <header class="topo">
+            <a href="#" class="marca marca-topo" data-ir="casa">
+                <span class="marca-icone">🐾</span>
+                <span><b id="nomeAbrigoTopo">Patinhas</b><small>Seu mundinho pet</small></span>
+            </a>
+
+            <div class="topo-direita">
+                <div class="saldo"><span><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg></span><strong id="moedasTopo">100</strong></div>
+                <div class="nivel-chip">⭐ Nível <strong id="nivelTopo">1</strong></div>
+                <div class="usuario-chip"><span id="avatarMini">🐶</span><span id="nomeJogador">Jogador</span></div>
+                <button id="sairJogo" class="botao-sair" type="button" title="Sair da conta">Sair ↗</button>
+            </div>
+        </header>
+
+        <div class="layout-jogo">
+            <aside class="menu-lateral">
+                <div class="perfil-mini">
+                    <div id="petMenu" class="perfil-pet">🐶</div>
+                    <strong id="nomePetMenu">Bob</strong>
+                    <span id="nivelMenu">Nível 1</span>
+                    <div class="mini-xp"><span id="barraXP"></span></div>
+                    <small id="xpTexto">0 / 100 XP</small>
+                </div>
+
+                <p class="menu-titulo">MEU MUNDO</p>
+                <button class="item-menu" data-pagina="criaturas" type="button"><span>🐾</span> Catálogo do abrigo</button>
+                <button class="item-menu ativo" data-pagina="casa" type="button"><span>🏡</span> Minha casa</button>
+                <button class="item-menu" data-pagina="meus-animais" type="button"><span>🐾</span> Meus animais</button>
+                <button class="item-menu" data-pagina="loja" type="button"><span>🛍️</span> Lojinha</button>
+                <button class="item-menu" data-pagina="inventario" type="button"><span>🎒</span> Mochila</button>
+                <button class="item-menu" data-pagina="cuidados" type="button"><span>💗</span> Cuidados</button>
+
+                <p class="menu-titulo">AVENTURAS</p>
+                <button class="item-menu" data-pagina="minigame" type="button"><span>☁️</span> Céu das Moedas <span class="menu-novo">NOVO</span></button>
+                <button class="item-menu" data-pagina="mapa" type="button"><span>🗺️</span> Explorar mapa</button>
+                <button class="item-menu" data-pagina="missoes" type="button"><span>📋</span> Missões</button>
+                <button class="item-menu" data-pagina="arena" type="button"><span>⚔️</span> Arena</button>
+                <button class="item-menu" data-pagina="evolucao" type="button"><span>✨</span> Evolução</button>
+
+                <p class="menu-titulo">ABRIGO</p>
+                <button class="item-menu" data-pagina="identidade" type="button"><span>🎨</span> Identidade do abrigo</button>
+
+                <div class="menu-dica">
+                    <span>💌</span>
+                    <strong>Uma dica!</strong>
+                    <p>Cuide do seu pet todos os dias para deixá-lo feliz e forte.</p>
+                </div>
+            </aside>
+
+            <main class="conteudo-jogo">
+
+                <!-- CASA -->
+                <section id="pagina-casa" class="pagina ativa">
+                    <div class="boas-vindas">
+                        <div>
+                            <span class="etiqueta">SEU CANTINHO ESPECIAL</span>
+                            <h1>Minha casa <span>🏡</span></h1>
+                            <p>Um lar cheio de amor para você e seu pet.</p>
+                        </div>
+                        <div class="acoes-boas-vindas"><button class="botao botao-claro" data-ir="meus-animais" type="button">Trocar animal 🐾</button><button class="botao botao-principal" data-ir="cuidados" type="button">Cuidar do pet 💗</button></div>
+                    </div>
+
+                    <div class="banner-casa">
+                        <div class="banner-texto">
+                            <span class="etiqueta">MELHORES AMIGOS</span>
+                            <h2>O seu pet está esperando por você!</h2>
+                            <p>Alimente, brinque e dê muito carinho para ele crescer feliz.</p>
+                            <button class="botao botao-principal" data-ir="cuidados" type="button">Vamos cuidar!</button>
+                        </div>
+                        <div id="petCasa" class="pet-casa-grande">🐶</div>
+                        <div class="decoracao-casa decoracao-casa-um">🌸</div>
+                        <div class="decoracao-casa decoracao-casa-dois">✨</div>
+                    </div>
+
+                    <div class="resumo-titulo">
+                        <div><h2>Como seu pet está?</h2><p>Acompanhe as necessidades dele.</p></div>
+                        <span class="etiqueta" id="nomePetResumo">Bob</span>
+                    </div>
+
+                    <div class="status-grid">
+                        <article class="status-card">
+                            <div class="status-icone rosa">💖</div>
+                            <div><strong>Vida</strong><b id="textoVida">100/100</b></div>
+                            <div class="barra-status"><span id="barraVida"></span></div>
+                        </article>
+                        <article class="status-card">
+                            <div class="status-icone laranja">🍎</div>
+                            <div><strong>Fome</strong><b id="textoFome">100/100</b></div>
+                            <div class="barra-status"><span id="barraFome"></span></div>
+                        </article>
+                        <article class="status-card">
+                            <div class="status-icone amarelo">😊</div>
+                            <div><strong>Felicidade</strong><b id="textoFelicidade">100/100</b></div>
+                            <div class="barra-status"><span id="barraFelicidade"></span></div>
+                        </article>
+                        <article class="status-card">
+                            <div class="status-icone azul">⚡</div>
+                            <div><strong>Energia</strong><b id="textoEnergia">100/100</b></div>
+                            <div class="barra-status"><span id="barraEnergia"></span></div>
+                        </article>
+                    </div>
+
+                    <div class="resumo-titulo">
+                        <div><h2>Seu progresso 🌷</h2><p>Continue se divertindo com seu amigo.</p></div>
+                    </div>
+
+                    <div class="estatisticas-grid">
+                        <article class="estatistica-card"><span><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg></span><div><small>Moedas</small><strong id="totalMoedas">100</strong></div></article>
+                        <article class="estatistica-card"><span>⭐</span><div><small>Pontos de experiência</small><strong id="totalPontos">0</strong></div></article>
+                        <article class="estatistica-card"><span>🏆</span><div><small>Vitórias na arena</small><strong id="totalVitorias">0</strong></div></article>
+                    </div>
+
+                    <div class="destaque-minigame">
+                        <div class="destaque-icone">☁️<svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg></div>
+                        <div><span class="etiqueta">DIVERSÃO E RECOMPENSAS</span><h2>Vamos subir até o céu?</h2><p>Pule nos blocos, pegue <svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> moedas e aumente seu saldo!</p></div>
+                        <button class="botao botao-principal" data-ir="minigame" type="button">Jogar agora →</button>
+                    </div>
+                </section>
+
+                <!-- CUIDADOS -->
+                <section id="pagina-cuidados" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">CARINHO EM PRIMEIRO LUGAR</span><h1>Hora de cuidar! 💗</h1><p>Pequenas atitudes deixam seu pet muito mais feliz.</p></div>
+                    <div class="painel-pet-cuidados">
+                        <div id="petCuidados" class="pet-cuidados-emoji">🐶</div>
+                        <h2 id="nomePetCuidados">Bob</h2>
+                        <p>O amor está nos pequenos cuidados.</p>
+                        <div class="necessidades-pet" aria-live="polite">
+                            <div class="necessidade-pet"><span>🍎</span><div class="necessidade-conteudo"><div class="necessidade-cabecalho"><strong>Fome</strong><b id="nivelFomePet">100/100</b></div><div class="barra-necessidade"><span id="barraFomePet"></span></div><small id="mensagemFomePet">Seu pet está satisfeito.</small></div></div>
+                            <div class="necessidade-pet"><span>🎾</span><div class="necessidade-conteudo"><div class="necessidade-cabecalho"><strong>Diversão</strong><b id="nivelDiversaoPet">100/100</b></div><div class="barra-necessidade"><span id="barraDiversaoPet"></span></div><small id="mensagemDiversaoPet">Seu pet está feliz e brincalhão.</small></div></div>
+                        </div>
+                        <div class="progresso-cuidados" aria-label="Progresso dos cuidados">
+                            <h3>Meu histórico de cuidados</h3>
+                            <p>Cuide do seu pet e acompanhe cada atividade. A meta visual é de 5 ações por cuidado.</p>
+                            <div class="progresso-cuidados-grid">
+                                <article class="progresso-cuidado"><div class="necessidade-cabecalho"><strong>💗 Carinho</strong><b id="progressocarinho">0 vezes</b></div><div class="barra-necessidade"><span id="barraProgressocarinho" role="progressbar" aria-label="Carinho realizado" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"></span></div><small id="mensagemProgressocarinho"></small></article>
+                                <article class="progresso-cuidado"><div class="necessidade-cabecalho"><strong>🛁 Banho</strong><b id="progressobanho">0 vezes</b></div><div class="barra-necessidade"><span id="barraProgressobanho" role="progressbar" aria-label="Banhos realizados" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"></span></div><small id="mensagemProgressobanho"></small></article>
+                                <article class="progresso-cuidado"><div class="necessidade-cabecalho"><strong>😴 Descanso</strong><b id="progressodescansar">0 vezes</b></div><div class="barra-necessidade"><span id="barraProgressodescansar" role="progressbar" aria-label="Descansos realizados" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"></span></div><small id="mensagemProgressodescansar"></small></article>
+                                <article class="progresso-cuidado"><div class="necessidade-cabecalho"><strong>🏋️ Treino</strong><b id="progressotreinar">0 vezes</b></div><div class="barra-necessidade"><span id="barraProgressotreinar" role="progressbar" aria-label="Treinos realizados" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"></span></div><small id="mensagemProgressotreinar"></small></article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cuidados-grid">
+                        <article class="acao-card"><span>🍎</span><h3>Alimentar</h3><p>Mate a fome e ajude a recuperar a vida.</p><small>Custo: <svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 10 moedas</small><button id="alimentar" class="botao botao-principal" type="button">Dar comida</button></article>
+                        <article class="acao-card"><span>🎾</span><h3>Brincar</h3><p>Deixe seu pet mais feliz e ganhe experiência.</p><small>Consome energia</small><button id="brincar" class="botao botao-principal" type="button">Brincar</button></article>
+                        <article class="acao-card"><span>💗</span><h3>Dar carinho</h3><p>Um pouquinho de amor faz toda a diferença.</p><small>Grátis</small><button id="carinho" class="botao botao-principal" type="button">Dar carinho</button></article>
+                        <article class="acao-card"><span>🛁</span><h3>Tomar banho</h3><p>Um banho relaxante para ficar limpinho.</p><small>Consome energia</small><button id="banho" class="botao botao-principal" type="button">Dar banho</button></article>
+                        <article class="acao-card"><span>😴</span><h3>Descansar</h3><p>Recupere a energia para novas aventuras.</p><small>Grátis</small><button id="dormir" class="botao botao-principal" type="button">Dormir</button></article>
+                        <article class="acao-card"><span>🏋️</span><h3>Treinar</h3><p>Aumente o ataque e prepare-se para batalhas.</p><small>Custo: <svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 5 moedas</small><button id="treinar" class="botao botao-principal" type="button">Treinar</button></article>
+                    </div>
+                </section>
+
+                <!-- LOJA -->
+                <section id="pagina-loja" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">UM MIMO PARA SEU AMIGO</span><h1>Lojinha das Patinhas 🛍️</h1><p>Compre itens para cuidar, brincar e evoluir.</p></div>
+                    <div class="saldo-loja"><span class="icone-moeda" aria-hidden="true"><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg></span> Seu saldo: <strong id="moedasLoja">100</strong> moedas</div>
+                    <div class="loja-grid">
+                        <article class="produto-card"><span class="produto-emoji">🍖</span><span class="produto-tag">ALIMENTAÇÃO</span><h3>Ração especial</h3><p>Recupera 30 pontos de fome.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 10</strong><button class="botao botao-principal comprar" data-item="racao" type="button">Comprar</button></article>
+                        <article class="produto-card"><span class="produto-emoji">🦴</span><span class="produto-tag">SAÚDE</span><h3>Osso delicioso</h3><p>Recupera 20 pontos de vida.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 15</strong><button class="botao botao-principal comprar" data-item="osso" type="button">Comprar</button></article>
+                        <article class="produto-card"><span class="produto-emoji">🎾</span><span class="produto-tag">DIVERSÃO</span><h3>Bola colorida</h3><p>Um brinquedo para brincar.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 20</strong><button class="botao botao-principal comprar" data-item="bola" type="button">Comprar</button></article>
+                        <article class="produto-card"><span class="produto-emoji">🛏️</span><span class="produto-tag">CONFORTO</span><h3>Caminha fofa</h3><p>Recupera a energia do pet.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 30</strong><button class="botao botao-principal comprar" data-item="caminha" type="button">Comprar</button></article>
+                        <article class="produto-card"><span class="produto-emoji">🧴</span><span class="produto-tag">HIGIENE</span><h3>Kit de banho</h3><p>Ajuda a deixar seu pet feliz.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 15</strong><button class="botao botao-principal comprar" data-item="banho" type="button">Comprar</button></article>
+                        <article class="produto-card"><span class="produto-emoji">✨</span><span class="produto-tag">EVOLUÇÃO</span><h3>Poção de XP</h3><p>Concede 25 pontos de experiência.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 25</strong><button class="botao botao-principal comprar" data-item="pocao" type="button">Comprar</button></article>
+                    </div>
+                </section>
+
+                <!-- INVENTÁRIO -->
+                <section id="pagina-criaturas" class="pagina">
+                    <div class="boas-vindas">
+                        <div><span class="etiqueta">CENTRAL DE ADOÇÃO</span><h1>Animais disponíveis <span>🏠</span></h1><p>Conheça os outros animais que procuram uma família e adote seu próximo companheiro.</p></div>
+                        <button class="botao botao-principal" id="novaCriatura" type="button">＋ Nova criatura</button>
+                    </div>
+                    <div class="estatisticas-grid">
+                        <article class="estatistica-card"><span>🐾</span><div><small>Criaturas</small><strong id="contadorCriaturas">0</strong></div></article>
+                        <article class="estatistica-card"><span>💚</span><div><small>Disponíveis</small><strong id="contadorDisponiveis">0</strong></div></article>
+                        <article class="estatistica-card"><span>🏡</span><div><small>Adoções</small><strong id="contadorAdotados">0</strong></div></article>
+                    </div>
+                    <div class="filtros-criaturas">
+                        <label class="busca-criaturas">🔎 <input id="buscaCriaturas" type="search" placeholder="Buscar por nome ou espécie" aria-label="Pesquisar criaturas"></label>
+                        <label>Espécie <select id="filtroEspecie"><option value="">Todas</option></select></label>
+                        <label>Personalidade <select id="filtroPersonalidade"><option value="">Todas</option></select></label>
+                        <label>Raridade <select id="filtroRaridade"><option value="">Todas</option></select></label>
+                        <label class="favoritos-toggle"><input id="somenteFavoritos" type="checkbox"> ⭐ Favoritos</label>
+                    </div>
+                    <div id="listaCriaturas" class="grade-criaturas" aria-live="polite"></div>
+                    <dialog id="dialogCriatura" class="dialog-criatura"><form id="formCriatura" method="dialog">
+                        <h2 id="tituloFormCriatura">Nova criatura</h2>
+                        <label>Nome<input name="nome" required maxlength="32"></label>
+                        <label>Espécie<input name="especie" required maxlength="32"></label>
+                        <div class="linha-form-criatura"><label>Energia (0–100)<input name="energia" type="number" min="0" max="100" value="80" required></label><label>Personalidade<select name="personalidade"><option>Curiosa</option><option>Calma</option><option>Corajosa</option><option>Brincalhona</option><option>Carinhosa</option></select></label></div>
+                        <div class="linha-form-criatura"><label>Raridade<select name="raridade"><option>Comum</option><option>Raro</option><option>Épico</option></select></label><label>Imagem (URL opcional)<input name="imagem" type="url" placeholder="https://..."></label></div>
+                        <label>Descrição<input name="descricao" maxlength="120" placeholder="Um detalhe sobre a criatura"></label>
+                        <div class="acoes-form-criatura"><button class="botao botao-claro" type="button" id="cancelarCriatura">Cancelar</button><button class="botao botao-principal" type="submit">Salvar criatura</button></div>
+                    </form></dialog>
+                </section>
+
+                <section id="pagina-meus-animais" class="pagina">
+                    <div class="boas-vindas"><div><span class="etiqueta">SUA FAMÍLIA DE PATINHAS</span><h1>Meus animais <span>🐾</span></h1><p>Seu companheiro de aventura e todos os animais que você adotou.</p></div><button class="botao botao-principal" data-ir="criaturas" type="button">Conhecer animais →</button></div>
+                    <div class="estatisticas-grid"><article class="estatistica-card"><span>🐾</span><div><small>Seu companheiro</small><strong id="totalMeusAnimais">0</strong></div></article><article class="estatistica-card"><span>🏡</span><div><small>Animais adotados</small><strong id="totalMeusAdotados">0</strong></div></article></div>
+                    <div id="listaMeusAnimais" class="grade-criaturas" aria-live="polite"></div>
+                </section>
+
+                <section id="pagina-inventario" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">TUDO GUARDADINHO</span><h1>Minha mochila 🎒</h1><p>Use os itens que você comprou na lojinha.</p></div>
+                    <div id="listaInventario" class="inventario-grid"></div>
+                </section>
+
+                <!-- MINI GAME -->
+                <section id="pagina-minigame" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">MINI GAME • GANHE <svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> MOEDAS</span><h1>Céu das Moedinhas ☁️</h1><p>Pule de plataforma em plataforma e alcance as nuvens mais altas!</p></div>
+
+                    <div class="minigame-intro">
+                        <div class="minigame-pet-mini" id="petMiniGame">🐶</div>
+                        <div><h2>Preparado para subir?</h2><p>Movimente seu pet para os lados e colete todas as <svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> moedas que conseguir.</p></div>
+                        <div class="recompensa-info"><span><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg></span><strong>1 moeda</strong><small>por moeda coletada</small></div>
+                    </div>
+
+                    <div class="jogo-plataformas">
+                        <div class="minigame-topo">
+                            <div><span><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> MOEDAS</span><strong id="moedasPartida">0</strong></div>
+                            <div><span>☁️ ALTURA</span><strong id="alturaPartida">0 m</strong></div>
+                            <div><span>🏆 RECORDE</span><strong id="recordePartida">0 m</strong></div>
+                        </div>
+
+                        <div class="canvas-container">
+                            <canvas id="canvasMiniGame" width="420" height="600" aria-label="Mini game de pular em plataformas e coletar moedas"></canvas>
+                            <div id="inicioMiniGame" class="sobreposicao-jogo">
+                                <div class="painel-inicio-jogo">
+                                    <span class="icone-inicio-jogo">🐾☁️</span>
+                                    <h2>Vamos para o céu?</h2>
+                                    <p>Pule nos blocos, colete moedas e tente bater seu recorde!</p>
+                                    <button id="iniciarMiniGame" class="botao botao-principal" type="button">Começar a jogar! 🚀</button>
+                                </div>
+                            </div>
+                            <div id="fimMiniGame" class="sobreposicao-jogo oculto">
+                                <div class="painel-inicio-jogo">
+                                    <span class="icone-inicio-jogo">🎉</span>
+                                    <h2>Fim da aventura!</h2>
+                    <p id="resumoMiniGame">Você coletou <svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 0 moedas.</p>
+                                    <button id="jogarNovamente" class="botao botao-principal" type="button">Jogar novamente ↻</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="controles-minigame">
+                            <div><strong>⌨️ Como jogar</strong><p>Use <b>← →</b> ou <b>A / D</b> para se movimentar. No celular, use os botões abaixo.</p></div>
+                            <div class="botoes-move">
+                                <button id="moverEsquerda" class="botao-movimento" type="button" aria-label="Mover para a esquerda">←</button>
+                                <button id="moverDireita" class="botao-movimento" type="button" aria-label="Mover para a direita">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dica-minigame"><span>💡</span><p><strong>Dica:</strong> o pet pula automaticamente quando toca em uma plataforma. Tente aterrissar nos blocos e não deixe seu amigo cair!</p></div>
+                </section>
+
+                <!-- MAPA -->
+                <section id="pagina-mapa" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">UM MUNDO PARA DESCOBRIR</span><h1>Mapa das aventuras 🗺️</h1><p>Explore novos lugares, ganhe <svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> moedas e acumule experiência.</p></div>
+                    <div class="mapa-banner"><span>🌈</span><div><h2>Para onde vamos hoje?</h2><p>Cada lugar guarda uma recompensa especial.</p></div></div>
+                    <div class="mapa-grid">
+                        <button class="local-mapa" data-local="Praça das Flores" type="button"><span>🌷</span><h3>Praça das Flores</h3><p>Um lugar tranquilo e colorido.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> +5 moedas</strong><small>Energia: 10</small><b>Explorar →</b></button>
+                        <button class="local-mapa" data-local="Floresta Encantada" type="button"><span>🌳</span><h3>Floresta Encantada</h3><p>Árvores mágicas e surpresas.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> +15 moedas</strong><small>Energia: 10</small><b>Explorar →</b></button>
+                        <button class="local-mapa" data-local="Praia Rosada" type="button"><span>🏖️</span><h3>Praia Rosada</h3><p>Uma praia cheia de conchinhas.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> +20 moedas</strong><small>Energia: 10</small><b>Explorar →</b></button>
+                        <button class="local-mapa" data-local="Montanha Mágica" type="button"><span>⛰️</span><h3>Montanha Mágica</h3><p>Uma vista linda lá do alto.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> +25 moedas</strong><small>Energia: 10</small><b>Explorar →</b></button>
+                        <button class="local-mapa" data-local="Castelo dos Pets" type="button"><span>🏰</span><h3>Castelo dos Pets</h3><p>O lar das maiores aventuras.</p><strong><svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> +30 moedas</strong><small>Energia: 10</small><b>Explorar →</b></button>
+                    </div>
+                    <div id="cenaExploracao" class="mapa-exploracao oculto">
+                        <div class="mapa-exploracao-topo"><div><span class="etiqueta">PASSEIO DO PET</span><h2 id="tituloLocalExploracao">Praça das Flores</h2><p id="mensagemExploracao" role="status" aria-live="polite">Use as setas ou WASD para caminhar até a bandeira.</p></div><button id="voltarMapa" class="botao botao-claro" type="button">← Voltar aos lugares</button></div>
+                        <div id="palcoExploracao" class="palco-exploracao" aria-label="Mapa para caminhar">
+                            <div id="decoracoesExploracao" class="decoracoes-exploracao" aria-hidden="true"></div>
+                            <svg class="caminho-exploracao" viewBox="0 0 1000 380" preserveAspectRatio="none" aria-hidden="true">
+                                <path class="trilha-sombra" d="M 80 274 C 155 274, 165 218, 250 218 S 350 278, 430 220 S 535 112, 610 150 S 735 244, 790 190 S 835 105, 880 84" />
+                                <path class="trilha-piso" d="M 80 274 C 155 274, 165 218, 250 218 S 350 278, 430 220 S 535 112, 610 150 S 735 244, 790 190 S 835 105, 880 84" />
+                                <path class="trilha-centro" d="M 80 274 C 155 274, 165 218, 250 218 S 350 278, 430 220 S 535 112, 610 150 S 735 244, 790 190 S 835 105, 880 84" />
+                            </svg>
+                            <div id="petExplorando" class="pet-explorando" role="img" aria-label="Seu animal adotado">🐶</div>
+                            <div id="destinoExploracao" class="destino-exploracao" aria-label="Bandeira de chegada"><span>🏁</span><small>Chegada</small></div>
+                        </div>
+                        <div class="controles-exploracao"><p>Movimente o pet com <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> ou <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>. No celular, use os botões.</p><div class="setas-exploracao" aria-label="Controles para caminhar"><button type="button" data-passo-mapa="cima" aria-label="Caminhar para cima">▲</button><div><button type="button" data-passo-mapa="esquerda" aria-label="Caminhar para esquerda">◀</button><button type="button" data-passo-mapa="baixo" aria-label="Caminhar para baixo">▼</button><button type="button" data-passo-mapa="direita" aria-label="Caminhar para direita">▶</button></div></div></div>
+                    </div>
+                </section>
+
+                <!-- MISSÕES -->
+                <section id="pagina-missoes" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">DESAFIOS DO DIA</span><h1>Quadro de missões 📋</h1><p>Complete atividades para receber recompensas.</p></div>
+                    <div class="missao-banner"><span>🏅</span><div><h2>Pequenas missões, grandes conquistas!</h2><p>Faça as atividades e resgate suas recompensas.</p></div></div>
+                    <article class="missao-luta-card">
+                        <div class="missao-luta-arte" aria-hidden="true"><span>🐾</span><b>VS</b><span>🐲</span></div>
+                        <div class="missao-luta-texto"><span class="etiqueta">DESAFIO DE COMBATE</span><h2>Duelo dos companheiros</h2><p>Escolha seus golpes na Arena. A cada turno, os dois lutadores atacam e a vida diminui até alguém vencer. Vença para concluir a missão de primeira vitória.</p></div>
+                        <button class="botao botao-principal" type="button" data-ir="arena">Começar combate ⚔️</button>
+                    </article>
+                    <div id="listaMissoes" class="lista-missoes"></div>
+                </section>
+
+                <!-- ARENA -->
+                <section id="pagina-arena" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">MOSTRE SUA FORÇA</span><h1>Arena dos campeões ⚔️</h1><p>Treine seu pet e enfrente adversários em batalhas.</p></div>
+                    <div class="cabecalho-pagina"><span class="etiqueta">AVENTURAS POR FASE</span><h2>Desafios de batalha 🏰</h2><p>Cuide do seu pet e ajude-o a evoluir para desbloquear novos desafios.</p></div>
+                    <div class="fases-batalha-grid">
+                        <article class="fase-batalha-card" id="cartaoFase1"><div class="fase-batalha-arte fase-arte-pulos">☁️ 🐾 🟪 🌀</div><span class="fase-status" id="statusFase1">Disponível</span><h3>Fase 1 — Caminho do portal</h3><p>Pule de bloco em bloco e alcance o portal no final.</p><button class="botao botao-principal" type="button" data-iniciar-fase="1">Jogar fase 1</button></article>
+                        <article class="fase-batalha-card bloqueada" id="cartaoFase2"><div class="fase-batalha-arte fase-arte-corrida">🏃 🧱 ⬆️</div><span class="fase-status" id="statusFase2">🔒 Nível 3</span><h3>Fase 2 — Corrida até o topo</h3><p>Suba pelos blocos, desvie do adversário e chegue ao topo. Você tem 3 corações; perder os três bloqueia a fase por 2 minutos.</p><button class="botao botao-principal" type="button" data-iniciar-fase="2">Jogar fase 2</button></article>
+                        <article class="fase-batalha-card bloqueada" id="cartaoFase3"><div class="fase-batalha-arte fase-arte-dragao">🐉 🔥 🛡️</div><span class="fase-status" id="statusFase3">🔒 Nível 5 + fase 2</span><h3>Fase 3 — O dragão de fogo</h3><p>Desvie do fogo e pule em cima do dragão três vezes para vencê-lo.</p><button class="botao botao-principal" type="button" data-iniciar-fase="3">Jogar fase 3</button></article>
+                    </div>
+                    <div id="jogoFaseBatalha" class="jogo-fase-batalha oculto">
+                        <div class="jogo-fase-topo"><div><span class="etiqueta" id="tituloJogoFase">FASE 1</span><h2 id="nomeJogoFase">Caminho do portal</h2><p id="instrucaoJogoFase">Use A/D ou as setas para andar e Espaço para pular.</p></div><button id="fecharJogoFase" class="botao botao-claro" type="button">Sair da fase ✕</button></div>
+                        <canvas id="canvasFaseBatalha" width="900" height="440" aria-label="Jogo de plataforma de batalha"></canvas>
+                        <div class="controles-fase"><button type="button" data-mover-fase="esquerda">⬅️</button><button type="button" data-mover-fase="pular">⬆️ Pular</button><button type="button" data-mover-fase="direita">➡️</button></div>
+                        <p id="mensagemJogoFase" class="mensagem-jogo-fase" aria-live="polite">Boa sorte!</p>
+                    </div>
+
+                    <div class="arena-aviso">⚠️ Cuide da vida e da energia do seu pet antes de lutar.</div>
+                    <div class="arena-cenario" role="group" aria-label="Cenário do duelo dos companheiros">
+                        <div class="arena-cenario-fundo" aria-hidden="true">
+                            <span class="arena-lua">🌙</span><span class="arena-holofote arena-holofote-um"></span><span class="arena-holofote arena-holofote-dois"></span>
+                            <div class="arena-arquibancada"><span>🐾　✨　🐾　✨　🐾　✨　🐾</span></div>
+                            <div class="arena-piso"><i></i><i></i><i></i></div>
+                        </div>
+                        <div class="arena-painel">
+                        <div class="combatente">
+                            <span class="combatente-etiqueta">SEU PET</span>
+                            <div id="petArena" class="combatente-emoji">🐶</div>
+                            <h2 id="nomePetArena">Bob</h2>
+                            <p id="nivelArena">Nível 1</p>
+                            <div class="barra-status barra-combate"><span id="vidaJogadorArena"></span></div>
+                            <small id="vidaJogadorTexto">Vida: 100/100</small>
+                        </div>
+                        <div class="versus">VS</div>
+                        <div class="combatente inimigo">
+                            <span class="combatente-etiqueta">ADVERSÁRIO</span>
+                            <div id="emojiInimigoArena" class="combatente-emoji">🐲</div>
+                            <h2 id="nomeInimigo">Dragão Sombrio</h2>
+                            <p>Desafiante misterioso</p>
+                            <div class="barra-status barra-combate"><span id="vidaInimigoArena"></span></div>
+                            <small id="vidaInimigoTexto">Vida: 60/60</small>
+                        </div>
+                        </div>
+                    </div>
+                    <div id="registroBatalha" class="registro-batalha" aria-live="polite">Um adversário apareceu! Escolha sua estratégia.</div>
+                    <div class="acoes-arena">
+                        <button id="atacar" class="botao botao-principal" type="button">⚔️ Atacar</button>
+                        <button id="defender" class="botao botao-claro" type="button">🛡️ Defender</button>
+                        <button id="habilidade" class="botao botao-roxo" type="button">✨ Habilidade especial</button>
+                        <button id="novaBatalha" class="botao botao-claro" type="button">↻ Nova batalha</button>
+                    </div>
+                </section>
+
+                <!-- EVOLUÇÃO -->
+                <section id="pagina-evolucao" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">CRESCENDO JUNTOS</span><h1>Evolução do pet ✨</h1><p>Ganhe experiência para subir de nível e ficar mais forte.</p></div>
+                    <div class="evolucao-card">
+                        <div id="petEvolucao" class="pet-evolucao-emoji">🐶</div>
+                        <span class="etiqueta">SEU COMPANHEIRO</span>
+                        <h2 id="nomePetEvolucao">Bob</h2>
+                        <div class="nivel-grande">Nível <strong id="nivelEvolucao">1</strong></div>
+                        <p id="xpEvolucao">0 / 100 XP</p>
+                        <div class="barra-status barra-evolucao"><span id="barraXPEvolucao"></span></div>
+                        <p class="texto-suave">Cuide do pet, explore o mapa e vença batalhas para ganhar XP.</p>
+                    </div>
+                    <div class="atributos-grid">
+                        <article class="atributo-card"><span>⚔️</span><small>Força</small><strong id="ataquePet">7</strong><div class="atributo-trilho"><i id="barraAtaquePet"></i></div></article>
+                        <article class="atributo-card"><span>🛡️</span><small>Defesa</small><strong id="defesaPet">7</strong><div class="atributo-trilho"><i id="barraDefesaPet"></i></div></article>
+                        <article class="atributo-card"><span>⚡</span><small>Agilidade</small><strong id="velocidadePet">6</strong><div class="atributo-trilho"><i id="barraVelocidadePet"></i></div></article>
+                    </div>
+                    <div class="dica-evolucao"><span>🌟</span><p><strong>Continue jogando!</strong> A cada nível, você ganha <svg class="coin-icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#iconeMoeda"></use></svg> 20 moedas e recupera vida e energia.</p></div>
+                </section>
+
+                <!-- IDENTIDADE DO ABRIGO -->
+                <section id="pagina-identidade" class="pagina">
+                    <div class="cabecalho-pagina"><span class="etiqueta">DEIXE O ABRIGO COM A SUA CARA</span><h1>Identidade do abrigo 🎨</h1><p>Personalize o nome e escolha o tema que deixa seu espaço mais confortável.</p></div>
+                    <div class="identidade-layout">
+                        <form id="formIdentidadeAbrigo" class="identidade-card">
+                            <label for="campoNomeAbrigo">Nome do abrigo</label>
+                            <p>Esse nome aparece no topo e no rodapé do jogo.</p>
+                            <div class="campo-identidade"><input id="campoNomeAbrigo" name="nomeAbrigo" type="text" maxlength="32" minlength="2" autocomplete="organization" placeholder="Ex.: Patinhas Felizes" required><button class="botao botao-principal" type="submit">Salvar nome</button></div>
+                            <small>Use de 2 a 32 caracteres.</small>
+                        </form>
+                        <section class="identidade-card escolha-tema" aria-labelledby="tituloTemaAbrigo">
+                            <h2 id="tituloTemaAbrigo">Tema do jogo</h2>
+                            <p>A mudança é aplicada e salva assim que você escolhe.</p>
+                            <div class="opcoes-tema" role="group" aria-label="Escolha o tema">
+                                <button class="tema-opcao" type="button" data-tema-abrigo="claro" aria-pressed="true"><span class="tema-amostra tema-amostra-claro">☀️</span><strong>Claro</strong><small>Rosa suave e fundo claro</small></button>
+                                <button class="tema-opcao" type="button" data-tema-abrigo="escuro" aria-pressed="false"><span class="tema-amostra tema-amostra-escuro">🌙</span><strong>Escuro</strong><small>Fundo noturno e aconchegante</small></button>
+                            </div>
+                        </section>
+                        <div class="identidade-preview" aria-live="polite"><span>PRÉVIA DA IDENTIDADE</span><strong id="previaNomeAbrigo">🐾 Patinhas</strong><small id="previaTemaAbrigo">Tema claro</small></div>
+                    </div>
+                </section>
+
+                <footer class="rodape-jogo"><span>🐾 <span id="nomeAbrigoRodape">Patinhas</span></span><p>Cuide. Evolua. Batalhe. E espalhe amor! 💗</p></footer>
+            </main>
+        </div>
+    </section>
+
+    <!-- ÁREA DE RECOMPENSA DO MINI GAME -->
+    <div id="recompensaMoedas" class="recompensa-flutuante oculto"></div>
+
+</body>
+</html>
